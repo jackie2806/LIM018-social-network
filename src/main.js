@@ -3,11 +3,12 @@
 // eslint-disable-next-line import/no-cycle
 import { Init } from './components/Init.js';
 import { Login } from './components/Login.js';
+import { Register } from './components/Register.js';
 // myFunction();
 const divRoot = document.getElementById('root');
 const routes = {
   '/': Init,
-  // '/register': Register(),
+  '/register': Register,
   '/login': Login,
 };
 export const onNavigate = (pathname) => {
@@ -29,6 +30,3 @@ window.onpopstate = () => {
   divRoot.appendChild(routes[window.location.pathname]());
 };
 divRoot.appendChild(component());
-
-// divRoot.appendChild(Init());
-// divRoot.appendChild(Login());

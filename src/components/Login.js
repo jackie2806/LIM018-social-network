@@ -1,7 +1,17 @@
+// eslint-disable-next-line import/no-cycle
+import { onNavigate } from '../main.js';
+
 export const Login = () => {
   const divLogin = document.createElement('div');
   divLogin.className = 'divLogin';
   // Logo
+  const divArrowLogin = document.createElement('div');
+  divArrowLogin.className = 'divArrowLogin';
+  const arrowImgLogin = document.createElement('img');
+  arrowImgLogin.addEventListener('click', () => onNavigate('/'));
+  arrowImgLogin.src = '../img/arrow.png';
+  arrowImgLogin.alt = 'ArrowLeft';
+  divArrowLogin.appendChild(arrowImgLogin);
   const divLoginImg = document.createElement('div');
   divLoginImg.className = 'divLoginImg';
   const imgLoginLogo = document.createElement('img');
@@ -45,6 +55,7 @@ export const Login = () => {
   buttonGoogle.appendChild(buttonGoogleText);
   divLoginOthers.appendChild(text);
   divLoginOthers.appendChild(buttonGoogle);
+  divLogin.appendChild(divArrowLogin);
   divLogin.appendChild(divLoginImg);
   divLogin.appendChild(divInputs);
   divLogin.appendChild(divLoginOthers);
