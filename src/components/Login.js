@@ -1,4 +1,4 @@
-const Login = () => {
+export const Login = () => {
   const divLogin = document.createElement('div');
   divLogin.className = 'divLogin';
   // Logo
@@ -51,5 +51,3 @@ const Login = () => {
 
   return divLogin;
 };
-
-export default Login;

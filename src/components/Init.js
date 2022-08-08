@@ -1,4 +1,6 @@
-const Init = () => {
+import { onNavigate } from '../main.js';
+
+export const Init = () => {
   const divInit = document.createElement('div');
   divInit.className = 'divInit';
   // Logo
@@ -16,11 +18,13 @@ const Init = () => {
   buttonCreateCount.setAttribute('type', 'button');
   const buttonCreateCountText = document.createTextNode('Crear una cuneta');
   buttonCreateCount.appendChild(buttonCreateCountText);
+  buttonCreateCount.addEventListener('click', () => onNavigate('/register'));
   divButtons.appendChild(buttonCreateCount);
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'buttonLogin';
   const buttonLoginText = document.createTextNode('Iniciar Sesión');
   buttonLogin.appendChild(buttonLoginText);
+  buttonLogin.addEventListener('click', () => onNavigate('/login'));
   divButtons.appendChild(buttonLogin);
 
   divInit.appendChild(divInitImg);
@@ -28,5 +32,3 @@ const Init = () => {
 
   return divInit;
 };
-
-export default Init;

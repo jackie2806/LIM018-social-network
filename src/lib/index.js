@@ -2,5 +2,5 @@
 
 export const myFunction = () => {
   // aqui tu codigo. Soy Jackie
-  console.log('Hola mundo!');
+  // console.log('Hola mundo!');
 };
