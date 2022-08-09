@@ -72,6 +72,23 @@ body {
     
 
   }
+    /*Register*/
+  .divRegister{
+    display: flex;    
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .divArrowRegister{
+    margin-top: 2rem;
+    display: flex;  
+  }
+  .arrowImgRegister {
+    width: 5rem;
+    height: 5rem;
+    margin-left: 1rem;
+    align-items: flex-start;
+  }
 
   /*Login*/
   .divLogin{
@@ -112,8 +129,62 @@ body {
     display: flex;    
     flex-wrap: wrap;
     flex-direction: column;
-    align-items: center;
+    /*align-items: center;*/
     
+  }
+  .divTextEmail{
+    color: #293462;
+    margin-top: 1rem;
+    margin-left: 10rem;
+    font-size: small;
+    font-weight: bold;
+  }
+  .inputEmail{
+    width: 25rem;
+    height: 5rem;
+    border-radius: 4rem;
+    color:#293462;
+    font-size: 2rem;
+    text-align: center;
+    border: 0.3rem solid #F58634;
+    margin: 1rem 7rem;
+
+  }
+  .divTextPassword {
+    color: #293462;
+    margin-top: 1rem;
+    margin-left: 10rem;
+    font-size: small;
+    font-weight: bold;
+  }
+  .inputPassword {
+    width: 25rem;
+    height: 5rem;
+    border-radius: 4rem;
+    color:#293462;
+    font-size: 2rem;
+    text-align: center;
+    border: 0.3rem solid #F58634;
+    margin: 1rem 7rem;
+  }
+  .divForgotPassword {
+    color: #293462;
+    margin-top: 0rem;
+    margin-left: 15rem;
+    font-size: small;
+    font-weight: bold;
+    
+  }
+  .buttonLogin{
+    width: 25rem;
+    height: 5rem;
+    border-radius: 4rem;
+    background-color: #F58634;
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+    margin: 2.5rem 7rem;
+    border: 0.3rem solid #F58634;
   }
   .divLoginOthers {
     display: flex;    

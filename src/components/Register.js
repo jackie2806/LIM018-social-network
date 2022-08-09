@@ -6,6 +6,7 @@ export const Register = () => {
   const divArrowRegister = document.createElement('div');
   divArrowRegister.className = 'divArrowRegister';
   const arrowImgRegister = document.createElement('img');
+  arrowImgRegister.className = 'arrowImgRegister';
   arrowImgRegister.addEventListener('click', () => onNavigate('/'));
   arrowImgRegister.src = '../img/arrow.png';
   arrowImgRegister.alt = 'ArrowLeft';

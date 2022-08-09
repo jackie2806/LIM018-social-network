@@ -24,11 +24,13 @@ export const Login = () => {
   const divInputs = document.createElement('div');
   divInputs.className = 'divInputs';
   const divTextEmail = document.createElement('div');
+  divTextEmail.className = 'divTextEmail';
   divTextEmail.textContent = 'Ingresa tu correo electrónico';
   const inputEmail = document.createElement('input');
   inputEmail.className = 'inputEmail';
   inputEmail.placeholder = 'ejemplo@gmail.com';
   const divTextPassword = document.createElement('div');
+  divTextPassword.className = 'divTextPassword';
   divTextPassword.textContent = 'Ingresa tu contraseña';
   const inputPassword = document.createElement('input');
   inputPassword.className = 'inputPassword';
@@ -38,6 +40,7 @@ export const Login = () => {
   divInputs.appendChild(divTextPassword);
   divInputs.appendChild(inputPassword);
   const divTextForgotPassword = document.createElement('div');
+  divTextForgotPassword.className = 'divForgotPassword';
   divTextForgotPassword.textContent = '¿Olvidaste tu contraseña?';
   divInputs.appendChild(divTextForgotPassword);
   const buttonLogin = document.createElement('button');
