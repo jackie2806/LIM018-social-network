@@ -6,8 +6,9 @@ export const Init = () => {
   divInit.className = 'divInit';
   // Logo
   const divInitImg = document.createElement('div');
-  divInitImg.className = 'divImg';
+  divInitImg.className = 'divInitImg';
   const imgInitLogo = document.createElement('img');
+  imgInitLogo.className = 'imgInitLogo';
   imgInitLogo.src = '../img/logo.png';
   imgInitLogo.alt = 'Logo';
   divInitImg.appendChild(imgInitLogo);
@@ -17,16 +18,16 @@ export const Init = () => {
   const buttonCreateCount = document.createElement('button');
   buttonCreateCount.className = 'buttonCreateCount';
   buttonCreateCount.setAttribute('type', 'button');
-  const buttonCreateCountText = document.createTextNode('Crear una cuneta');
+  const buttonCreateCountText = document.createTextNode('Crear una cuenta');
   buttonCreateCount.appendChild(buttonCreateCountText);
   buttonCreateCount.addEventListener('click', () => onNavigate('/register'));
   divButtons.appendChild(buttonCreateCount);
-  const buttonLogin = document.createElement('button');
-  buttonLogin.className = 'buttonLogin';
+  const buttonInitLogin = document.createElement('button');
+  buttonInitLogin.className = 'buttonInitLogin';
   const buttonLoginText = document.createTextNode('Iniciar Sesión');
-  buttonLogin.appendChild(buttonLoginText);
-  buttonLogin.addEventListener('click', () => onNavigate('/login'));
-  divButtons.appendChild(buttonLogin);
+  buttonInitLogin.appendChild(buttonLoginText);
+  buttonInitLogin.addEventListener('click', () => onNavigate('/login'));
+  divButtons.appendChild(buttonInitLogin);
 
   divInit.appendChild(divInitImg);
   divInit.appendChild(divButtons);

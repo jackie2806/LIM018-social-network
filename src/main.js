@@ -2,7 +2,9 @@
 // import { myFunction } from './lib/index.js';
 // eslint-disable-next-line import/no-cycle
 import { Init } from './components/Init.js';
+// eslint-disable-next-line import/no-cycle
 import { Login } from './components/Login.js';
+// eslint-disable-next-line import/no-cycle
 import { Register } from './components/Register.js';
 // myFunction();
 const divRoot = document.getElementById('root');

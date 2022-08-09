@@ -8,6 +8,7 @@ export const Login = () => {
   const divArrowLogin = document.createElement('div');
   divArrowLogin.className = 'divArrowLogin';
   const arrowImgLogin = document.createElement('img');
+  arrowImgLogin.className = 'arrowImgLogin';
   arrowImgLogin.addEventListener('click', () => onNavigate('/'));
   arrowImgLogin.src = '../img/arrow.png';
   arrowImgLogin.alt = 'ArrowLeft';
@@ -15,6 +16,7 @@ export const Login = () => {
   const divLoginImg = document.createElement('div');
   divLoginImg.className = 'divLoginImg';
   const imgLoginLogo = document.createElement('img');
+  imgLoginLogo.className = 'imgLoginLogo';
   imgLoginLogo.src = '../img/logo.png';
   imgLoginLogo.alt = 'Logo';
   divLoginImg.appendChild(imgLoginLogo);

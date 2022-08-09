@@ -12,7 +12,7 @@ export const Register = () => {
   divArrowRegister.appendChild(arrowImgRegister);
   divRegister.appendChild(divArrowRegister);
   const span = document.createElement('span');
-  span.textContent = 'Falta que Yurema haga el Resgister Form';
+  span.textContent = 'Pronto seré creado. Soy un Form en proyecto :)';
   divRegister.appendChild(span);
 
   const divLoginText = document.createElement('div');
