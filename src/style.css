@@ -89,6 +89,14 @@ body {
     margin-left: 1rem;
     align-items: flex-start;
   }
+  
+  .divLoginText .aLogin{
+    display: flex;    
+    flex-wrap: wrap;
+    flex-direction: column;
+    pointer-events: auto;
+  }
+  
 
   /*Login*/
   .divLogin{

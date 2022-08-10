@@ -12,13 +12,18 @@ export const Register = () => {
   arrowImgRegister.alt = 'ArrowLeft';
   divArrowRegister.appendChild(arrowImgRegister);
   divRegister.appendChild(divArrowRegister);
+
   const span = document.createElement('span');
   span.textContent = 'Pronto seré creado. Soy un Form en proyecto :)';
   divRegister.appendChild(span);
 
   const divLoginText = document.createElement('div');
   divLoginText.className = 'divLoginText';
-  divLoginText.textContent = '¿Ya tienes una cuenta? Haz click aquí';
+  const aLogin = document.createElement('a');
+  aLogin.className = 'aLogin';
+  aLogin.textContent = '¿Ya tienes una cuenta? Haz click aquí';
+  // const loginText = document.createTextNode('¿Ya tienes una cuenta? Haz click aquí');
+  divLoginText.appendChild(aLogin);
   divLoginText.addEventListener('click', () => onNavigate('/login'));
   divRegister.appendChild(divLoginText);
   return divRegister;
