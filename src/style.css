@@ -193,4 +193,15 @@ body {
     align-items: center;
 
   }
+  .buttonGoogle {
+    width: 25rem;
+    height: 5rem;
+    border-radius: 4rem;
+    background-color:#DB4437;
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+    margin: 2.5rem 7rem;
+    border: 0.3rem solid #DB4437;
+  }
 }
