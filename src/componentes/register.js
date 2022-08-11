@@ -9,7 +9,7 @@ export default () => {
         <input id='phone' placeholder='Phone'/> <br>
         <input id='password' placeholder='Password'/> <br>
         <input id='confirmPassword' placeholder='Confirm Password'/> <br>
-        <input id='confirmar' type="submit" class='registrar'/>
+        <input id='confirmar' type="submit"/>
     </div>`
     const divElement = document.createElement ('div')
     divElement.innerHTML = createAccount;
