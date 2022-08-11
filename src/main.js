@@ -4,5 +4,6 @@ myFunction();
 // 
 const init = () => {
     window.addEventListener('hashchange', () => myFunction(window.location.hash))
+    myFunction(window.location.hash)
 }
 window.addEventListener ('load', init)
