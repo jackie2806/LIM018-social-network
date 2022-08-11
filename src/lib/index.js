@@ -1,6 +1,7 @@
 // aqui exportaras las funciones que necesites
 import {vistas} from '../componentes/init.js'
 
+<<<<<<< HEAD
 export const myFunction = (route) => {
   const container = document.getElementById ('container')
   container.innerHTML = '';
@@ -14,5 +15,9 @@ export const myFunction = (route) => {
 
   }
   console.log(route)
+=======
+export const myFunction = () => {
+  // aqui tu codigo
+>>>>>>> pre-main
   console.log('Hola mundo!');
 };
