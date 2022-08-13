@@ -1,14 +1,4 @@
 // Este es el punto de entrada de tu aplicacion
-<<<<<<< HEAD
-import { myFunction } from './lib/index.js';
-myFunction();
-// 
-const init = () => {
-    window.addEventListener('hashchange', () => myFunction(window.location.hash))
-    myFunction(window.location.hash)
-}
-window.addEventListener ('load', init)
-=======
 // import { myFunction } from './lib/index.js';
 // eslint-disable-next-line import/no-cycle
 import { Init } from './components/Init.js';
@@ -42,4 +32,3 @@ window.onpopstate = () => {
   divRoot.appendChild(routes[window.location.pathname]());
 };
 divRoot.appendChild(component());
->>>>>>> pre-main

@@ -213,3 +213,58 @@ body {
     border: 0.3rem solid #DB4437;
   }
 }
+   /* Register */
+   .divRegister {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+   }
+   .divLogoRegister {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   }
+   .divLogoRegister .imgLogo {
+    max-width: 400px;
+   }
+   .formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   }
+   .inputRegister {
+    display: flex;
+    justify-content: center;
+    margin: 1.5vh;
+    padding: 1vh;
+    width: 25rem;
+    height: 5rem;
+    border-radius: 4rem;
+    font-size: 2rem;
+    text-align: center;
+    border: 0.3rem solid #F58634;
+   }
+   .inputForm{
+    display: flex;
+    justify-content: center;
+    border: 0;
+    margin: 1vh;
+    padding: 1vh;
+   }
+   .buttonRegister {
+    background-color: #F58634;
+   }
+   .divRegisterText {
+    display: flex;
+    justify-content: center;
+   }
+   .aLogin{
+    font-family: ;
+   }
+
+ @media (max-with: 400px ) {
+  body {
+    background: rebeccapurple;
+  }
+ }
