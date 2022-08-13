@@ -245,8 +245,8 @@ body {
   }
    
 
- @media (max-with: 400px ) {
+ /*@media (max-with: 400px ) {
   body {
     background: rebeccapurple;
   }
- }
+ } */
