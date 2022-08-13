@@ -4,7 +4,7 @@ import { onNavigate } from '../main.js';
 export const Register = () => {
   // flecha
   const divRegister = document.createElement('div');
-  divRegister.className = 'divRegister'
+  divRegister.className = 'divRegister';
   const divArrowRegister = document.createElement('div');
   divArrowRegister.className = 'divArrowRegister';
   const arrowImgRegister = document.createElement('img');
@@ -18,7 +18,7 @@ export const Register = () => {
   const divLogoRegister = document.createElement('div');
   divLogoRegister.className = 'divLogoRegister';
   const imgLogo = document.createElement('img');
-  imgLogo.className ='imgLogo';
+  imgLogo.className = 'imgLogo';
   imgLogo.src = '/img/logo.png';
   imgLogo.alt = 'logo';
   divLogoRegister.appendChild(imgLogo);
@@ -116,7 +116,7 @@ export const Register = () => {
   const inputButtonRegister = document.createElement('button');
   inputButtonRegister.type = 'button';
   inputButtonRegister.id = 'buttonRegister';
-  inputButtonRegister.textContent ='Registrar';
+  inputButtonRegister.textContent = 'Registrar';
   buttonRegister.appendChild(inputButtonRegister);
   formRegister.appendChild(buttonRegister);
   divRegister.appendChild(formRegister);
