@@ -1,9 +1,8 @@
 // eslint-disable-next-line import/no-cycle
-// yure :)
 import { onNavigate } from '../main.js';
 
 export const Register = () => {
-  //flecha
+  // flecha
   const divRegister = document.createElement('div');
   divRegister.className = 'divRegister'
   const divArrowRegister = document.createElement('div');
@@ -15,7 +14,7 @@ export const Register = () => {
   arrowImgRegister.alt = 'ArrowLeft';
   divArrowRegister.appendChild(arrowImgRegister);
   divRegister.appendChild(divArrowRegister);
-  //logo
+  // logo
   const divLogoRegister = document.createElement('div');
   divLogoRegister.className = 'divLogoRegister';
   const imgLogo = document.createElement('img');
@@ -23,17 +22,17 @@ export const Register = () => {
   imgLogo.src = '/img/logo.png';
   imgLogo.alt = 'logo';
   divLogoRegister.appendChild(imgLogo);
-  divRegister.appendChild(divLogoRegister)
-  const formRegister = document.createElement('div')
-  formRegister.className = 'formulario'
-  //name
+  divRegister.appendChild(divLogoRegister);
+  const formRegister = document.createElement('div');
+  formRegister.className = 'formulario';
+  // name
   const divName = document.createElement('div');
   divName.className = 'divName inputRegister';
-  const inputName = document.createElement('input')
+  const inputName = document.createElement('input');
   inputName.className = 'inputForm';
   inputName.placeholder = 'Nombre y apellidos';
-  const divImg = document.createElement('div')
-  divImg.className = 'divimg'
+  const divImg = document.createElement('div');
+  divImg.className = 'divimg';
   const imgName = document.createElement('img');
   imgName.className = 'imgName';
   imgName.src = '/img/Vector-name.png';
@@ -43,31 +42,31 @@ export const Register = () => {
   divName.appendChild(inputName);
   formRegister.appendChild(divName);
   divRegister.appendChild(formRegister);
-  //email
+  // email
   const divEmail = document.createElement('div');
   divEmail.className = 'divEmail inputRegister';
-  const inputEmail = document.createElement('input')
+  const inputEmail = document.createElement('input');
   inputEmail.className = 'inputForm';
   inputEmail.placeholder = 'ejemplo@gmail.com';
   const divImgEmail = document.createElement('div');
-  divImgEmail.className = 'divImgEmail'
+  divImgEmail.className = 'divImgEmail';
   const imgEmail = document.createElement('img');
   imgEmail.className = 'imgEmail';
   imgEmail.src = '/img/Vector-email.png';
   imgEmail.alt = 'logoEmail';
   divEmail.appendChild(divImgEmail);
   divImgEmail.appendChild(imgEmail);
-  divEmail.appendChild(inputEmail)
+  divEmail.appendChild(inputEmail);
   formRegister.appendChild(divEmail);
   divRegister.appendChild(formRegister);
-  //telefono
+  // telefono
   const divPhone = document.createElement('div');
   divPhone.className = 'divPhone inputRegister';
-  const inputPhone = document.createElement('input')
+  const inputPhone = document.createElement('input');
   inputPhone.className = 'inputForm';
   inputPhone.placeholder = 'Teléfono';
   const divImgPhone = document.createElement('div');
-  divImgPhone.className = 'divImgPhone'
+  divImgPhone.className = 'divImgPhone';
   const imgPhone = document.createElement('img');
   imgPhone.className = 'imgPhone';
   imgPhone.src = '/img/Vector-phone.png';
@@ -77,10 +76,10 @@ export const Register = () => {
   divPhone.appendChild(inputPhone);
   formRegister.appendChild(divPhone);
   divRegister.appendChild(formRegister);
-  //contraseña
+  // contraseña
   const divContraseña = document.createElement('div');
   divContraseña.className = 'divContraseña inputRegister';
-  const inputContraseña = document.createElement('input')
+  const inputContraseña = document.createElement('input');
   inputContraseña.className = 'inputForm';
   inputContraseña.placeholder = 'Cree una contraseña';
   const divImgContraseña = document.createElement('div');
@@ -94,10 +93,10 @@ export const Register = () => {
   divContraseña.appendChild(inputContraseña);
   formRegister.appendChild(divContraseña);
   divRegister.appendChild(formRegister);
-  //confirmar contraseña
+  // confirmar contraseña
   const divConfirmContraseña = document.createElement('div');
   divConfirmContraseña.className = 'divConfirmContraseña inputRegister';
-  const inputConfirmContraseña = document.createElement('input')
+  const inputConfirmContraseña = document.createElement('input');
   inputConfirmContraseña.className = 'inputForm';
   inputConfirmContraseña.placeholder = 'Confime la contraseña';
   const divImgContraseña2 = document.createElement('div');
@@ -112,9 +111,9 @@ export const Register = () => {
   formRegister.appendChild(divConfirmContraseña);
   divRegister.appendChild(formRegister);
   // botton registrar
-  const buttonRegister = document.createElement('div')
+  const buttonRegister = document.createElement('div');
   buttonRegister.className = 'buttonRegister inputForm';
-  const inputButtonRegister = document.createElement('button')
+  const inputButtonRegister = document.createElement('button');
   inputButtonRegister.type = 'button';
   inputButtonRegister.id = 'buttonRegister';
   inputButtonRegister.textContent ='Registrar';
