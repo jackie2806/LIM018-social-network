@@ -72,31 +72,6 @@ body {
     
 
   }
-    /*Register*/
-  .divRegister{
-    display: flex;    
-    flex-wrap: wrap;
-    flex-direction: column;
-  }
-
-  .divArrowRegister{
-    margin-top: 2rem;
-    display: flex;  
-  }
-  .arrowImgRegister {
-    width: 5rem;
-    height: 5rem;
-    margin-left: 1rem;
-    align-items: flex-start;
-  }
-  
-  .divLoginText .aLogin{
-    display: flex;    
-    flex-wrap: wrap;
-    flex-direction: column;
-    pointer-events: auto;
-  }
-  
 
   /*Login*/
   .divLogin{
@@ -212,9 +187,8 @@ body {
     margin: 2.5rem 7rem;
     border: 0.3rem solid #DB4437;
   }
-}
-   /* Register */
-   .divRegister {
+  /* Register */
+  .divRegister {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -260,8 +234,16 @@ body {
     justify-content: center;
    }
    .aLogin{
-    font-family: ;
+    font-family: Roboto;
+    font-size: small;
+    margin-top: 10px;
    }
+   .divArrowRegister {
+    display: flex;
+    align-items: flex-start;
+   }
+  }
+   
 
  @media (max-with: 400px ) {
   body {
