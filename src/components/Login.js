@@ -45,6 +45,7 @@ export const Login = () => {
   divInputs.appendChild(divTextForgotPassword);
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'buttonLogin';
+  // buttonLogin.addEventListener('click', () => onNavigate('/home'));
   buttonLogin.setAttribute('type', 'button');
   const buttonLoginText = document.createTextNode('Iniciar Sesión');
   buttonLogin.appendChild(buttonLoginText);
