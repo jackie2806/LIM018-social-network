@@ -21,7 +21,14 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const firebase = initializeApp(firebaseConfig);
+const auth = getAuth(firebase);
+const state = onAuthStateChanged(auth, (user) => {
+  if (user != null) {
+    console.log('ilogged in!');
+  } else {
+    console.log('Firebase', 'No user');
+  }
+});
 
-export { auth, onAuthStateChanged };
+export { auth, state };
