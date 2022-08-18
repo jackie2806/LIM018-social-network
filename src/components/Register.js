@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
-// yure :)
 import { onNavigate } from '../main.js';
+import { registerUser } from '../lib/index.js';
 
 const Register = {
   formRegister: document.createElement('form'),
@@ -197,14 +197,18 @@ const Register = {
       return true
     }
 
-    const validaciones = (evt) => {
+    const validaciones = async (evt) => {
       evt.preventDefault()
 
       if (verificarContrasenas(evt) === false) return
       if (verificarCorreoRegistado(evt) === false) return
       
       // En este punto ya todas las validaciones estan hechas
-      alert("todas las validaciones correctas, listo para registrar el usuario")
+      
+      const email = evt.target.querySelector('#email').value
+      const password = evt.target.querySelector('#Password').value
+      const user = await registerUser(email, password)
+      console.log(user)
     }
 
     // Validar

@@ -6,12 +6,18 @@ import { Init } from './components/Init.js';
 import { Login } from './components/Login.js';
 // eslint-disable-next-line import/no-cycle
 import Register from './components/Register.js';
-// myFunction();
+// eslint-disable-next-line import/no-unresolved
+import { Home } from './components/Home.js ';
+import { authState } from './lib/index.js';
+
+const auth = authState();
+
 const divRoot = document.getElementById('root');
 const routes = {
   '/': Init,
   '/register': Register,
   '/login': Login,
+  '/home': Home,
 };
 export const onNavigate = (pathname) => {
   window.history.pushState(

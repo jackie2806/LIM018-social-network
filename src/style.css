@@ -13,19 +13,22 @@ body {
   height: 100vh;
   
 }
-@media (max-width:844px) {
   
 /*Init*/
   .divInit {
     display: flex;
-    
     flex-wrap: wrap;
   }
 
   .divInitImg {
     align-items: center;
     margin-top: 22rem;
-    
+  }
+  @media (min-width:844px) {
+    .divInit {
+      display: flex;      
+      flex-wrap: no-wrap;
+    }
   }
   .imgInitLogo {
     margin-left: 3rem;
@@ -184,7 +187,7 @@ body {
     margin: 2.5rem 7rem;
     border: 0.3rem solid #DB4437;
   }
-  }
+
      /* Register */
   .divRegister {
     display: flex;
@@ -266,8 +269,3 @@ body {
     cursor: pointer;
    }
 
- @media (max-with: 400px ) {
-  body {
-    background: rebeccapurple;
-  }
- }
