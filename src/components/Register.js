@@ -29,6 +29,7 @@ export const Register = () => {
   const divName = document.createElement('div');
   divName.className = 'divName inputRegister';
   const inputName = document.createElement('input');
+  inputName.setAttribute('id', 'inputNameAndLastname'); // Input name
   inputName.className = 'inputForm';
   inputName.placeholder = 'Nombre y apellidos';
   const divImg = document.createElement('div');
@@ -46,6 +47,7 @@ export const Register = () => {
   const divEmail = document.createElement('div');
   divEmail.className = 'divEmail inputRegister';
   const inputEmail = document.createElement('input');
+  inputEmail.setAttribute('id', 'inputEmail'); // input email
   inputEmail.className = 'inputForm';
   inputEmail.placeholder = 'ejemplo@gmail.com';
   const divImgEmail = document.createElement('div');
@@ -60,38 +62,23 @@ export const Register = () => {
   formRegister.appendChild(divEmail);
   divRegister.appendChild(formRegister);
   // telefono
-  const divPhone = document.createElement('div');
-  divPhone.className = 'divPhone inputRegister';
-  const inputPhone = document.createElement('input');
-  inputPhone.className = 'inputForm';
-  inputPhone.placeholder = 'Teléfono';
-  const divImgPhone = document.createElement('div');
-  divImgPhone.className = 'divImgPhone';
-  const imgPhone = document.createElement('img');
-  imgPhone.className = 'imgPhone';
-  imgPhone.src = '/img/Vector-phone.png';
-  imgPhone.alt = 'logoPhone';
-  divPhone.appendChild(divImgPhone);
-  divImgPhone.appendChild(imgPhone);
-  divPhone.appendChild(inputPhone);
-  formRegister.appendChild(divPhone);
-  divRegister.appendChild(formRegister);
   // contraseña
-  const divContraseña = document.createElement('div');
-  divContraseña.className = 'divContraseña inputRegister';
-  const inputContraseña = document.createElement('input');
-  inputContraseña.className = 'inputForm';
-  inputContraseña.placeholder = 'Cree una contraseña';
+  const divPassword = document.createElement('div');
+  divPassword.className = 'divContraseña inputRegister';
+  const inputPassword = document.createElement('input');
+  inputPassword.setAttribute('id', 'inputPassword');
+  inputPassword.className = 'inputForm';
+  inputPassword.placeholder = 'Cree una contraseña';
   const divImgContraseña = document.createElement('div');
   divImgContraseña.className = 'divImgContraseña';
   const imgContraseña = document.createElement('img');
   imgContraseña.className = 'imgContraseña';
   imgContraseña.src = '/img/Vector-ojito.png';
   imgContraseña.alt = 'logoContraseña';
-  divContraseña.appendChild(divImgContraseña);
+  divPassword.appendChild(divImgContraseña);
   divImgContraseña.appendChild(imgContraseña);
-  divContraseña.appendChild(inputContraseña);
-  formRegister.appendChild(divContraseña);
+  divPassword.appendChild(inputPassword);
+  formRegister.appendChild(divPassword);
   divRegister.appendChild(formRegister);
   // confirmar contraseña
   const divConfirmContraseña = document.createElement('div');
