@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/newline-after-import
-import { auth, onAuthStateChanged } from '../Firebase/config.js';
+import { auth, onAuthStateChanged } from '../firebase/config.js';
 import { createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js';
 
 export const authState = onAuthStateChanged(auth, (user) => {

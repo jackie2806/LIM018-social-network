@@ -5,17 +5,17 @@ import { Init } from './components/Init.js';
 // eslint-disable-next-line import/no-cycle
 import { Login } from './components/Login.js';
 // eslint-disable-next-line import/no-cycle
-import Register from './components/Register.js';
+import { DivRegister } from './components/Register.js';
 // eslint-disable-next-line import/no-unresolved
 import { Home } from './components/Home.js ';
-import { authState } from './lib/index.js';
+// import { authState } from './lib/index.js';
 
-const auth = authState();
+// const auth = authState();
 
 const divRoot = document.getElementById('root');
 const routes = {
   '/': Init,
-  '/register': Register,
+  '/register': DivRegister,
   '/login': Login,
   '/home': Home,
 };
