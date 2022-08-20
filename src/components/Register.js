@@ -4,7 +4,7 @@ import { registerUser } from '../lib/index.js';
 
 const Register = {
   formRegister: document.createElement('form'),
-  createHTML: function() {
+  createHTML: function () {
     const divRegister = document.createElement('div');
     divRegister.className = 'divRegister'
     const divArrowRegister = document.createElement('div');
