@@ -217,10 +217,11 @@ const Register = {
   }
 };
 
-export const DivRegister = () => {
+const init = () => {
   console.log('primera renderización');
   return Register.createHTML();
   
 }
 
-// export default init;
+export default init;
+console.log(init);

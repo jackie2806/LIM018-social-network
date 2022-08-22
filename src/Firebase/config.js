@@ -11,12 +11,12 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from 'htt
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyDU_PJehjpoNuEP16NALJnk8UBnTcTlIyw',
-  authDomain: 'placematch-cc756.firebaseapp.com',
-  projectId: 'placematch-cc756',
-  storageBucket: 'placematch-cc756.appspot.com',
-  messagingSenderId: '969722312897',
-  appId: '1:969722312897:web:0de49887f648c80d473c40',
+  apiKey: "AIzaSyAa5a6CUrWp58LY9N7CZU3t_AziHLmdoh0",
+  authDomain: "placematch-e45a0.firebaseapp.com",
+  projectId: "placematch-e45a0",
+  storageBucket: "placematch-e45a0.appspot.com",
+  messagingSenderId: "84299651513",
+  appId: "1:84299651513:web:4fcad2183d4ffcfa793e68"
 };
 
 // Initialize Firebase
