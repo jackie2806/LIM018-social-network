@@ -1,13 +1,8 @@
 // Import the functions you need from the SDKs you need
 // eslint-disable-next-line import/no-unresolved
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js';
-// eslint-disable-next-line import/no-unresolved
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js';
-
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-// 'https://www.gstatic.com/firebasejs/9.9.0/firebase-firestore.js'
-// 'https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,14 +16,4 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const firebase = initializeApp(firebaseConfig);
-const auth = getAuth(firebase);
-const state = onAuthStateChanged(auth, (user) => {
-  if (user != null) {
-    console.log('ilogged in!');
-  } else {
-    console.log('Firebase', 'No user');
-  }
-});
-
-export { auth, state };
+export const app = initializeApp(firebaseConfig);

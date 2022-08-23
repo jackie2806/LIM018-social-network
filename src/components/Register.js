@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
+// eslint-disable-next-line import/no-unresolved
 
 export const Register = () => {
   // flecha
@@ -66,9 +67,10 @@ export const Register = () => {
   const divPassword = document.createElement('div');
   divPassword.className = 'divContraseña inputRegister';
   const inputPassword = document.createElement('input');
-  inputPassword.setAttribute('id', 'inputPassword');
+  inputPassword.setAttribute('id', 'inputPassword'); // inputPassword
   inputPassword.className = 'inputForm';
   inputPassword.placeholder = 'Cree una contraseña';
+  inputPassword.setAttribute('type', 'password');
   const divImgContraseña = document.createElement('div');
   divImgContraseña.className = 'divImgContraseña';
   const imgContraseña = document.createElement('img');
@@ -81,7 +83,7 @@ export const Register = () => {
   formRegister.appendChild(divPassword);
   divRegister.appendChild(formRegister);
   // confirmar contraseña
-  const divConfirmContraseña = document.createElement('div');
+  /* const divConfirmContraseña = document.createElement('div');
   divConfirmContraseña.className = 'divConfirmContraseña inputRegister';
   const inputConfirmContraseña = document.createElement('input');
   inputConfirmContraseña.className = 'inputForm';
@@ -97,10 +99,12 @@ export const Register = () => {
   divConfirmContraseña.appendChild(inputConfirmContraseña);
   formRegister.appendChild(divConfirmContraseña);
   divRegister.appendChild(formRegister);
-  // botton registrar
+   */// botton registrar
   const buttonRegister = document.createElement('div');
   buttonRegister.className = 'buttonRegister inputForm';
   const inputButtonRegister = document.createElement('button');
+  inputButtonRegister.setAttribute('id', 'buttonRegister'); // button Register
+  // inputButtonRegister.addEventListener('click', () => addUser());
   inputButtonRegister.type = 'button';
   inputButtonRegister.id = 'buttonRegister';
   inputButtonRegister.textContent = 'Registrar';
