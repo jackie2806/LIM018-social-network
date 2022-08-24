@@ -8,9 +8,6 @@ import { Login } from './components/Login.js';
 import Register from './components/Register.js';
 // eslint-disable-next-line import/no-unresolved
 import { Home } from './components/Home.js ';
-import { authState } from './lib/index.js';
-
-const auth = authState();
 
 const divRoot = document.getElementById('root');
 const routes = {

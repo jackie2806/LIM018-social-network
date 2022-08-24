@@ -1,9 +1,22 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
+import { auth, signInWithEmailAndPassword } from '../firebase/methods.js';
+// eslint-disable-next-line import/no-unresolved
+// import { Home } from "./Home.js";
 
-const logear = (user, pwd) => {
-  return true
-}
+const loginEmailPassword = async () => {
+  const email = document.getElementById('inputEmail').value;
+  const password = document.getElementById('inputPassword').value;
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    /*  if (userCredential.user === email && password) {
+      return Home();
+    } */
+    console.log(userCredential.user);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const Login = () => {
   const divLogin = document.createElement('div');
@@ -31,12 +44,14 @@ export const Login = () => {
   divTextEmail.className = 'divTextEmail';
   divTextEmail.textContent = 'Ingresa tu correo electrónico';
   const inputEmail = document.createElement('input');
+  inputEmail.setAttribute('id', 'inputEmail'); // Id inputEmail
   inputEmail.className = 'inputEmail';
   inputEmail.placeholder = 'ejemplo@gmail.com';
   const divTextPassword = document.createElement('div');
   divTextPassword.className = 'divTextPassword';
   divTextPassword.textContent = 'Ingresa tu contraseña';
   const inputPassword = document.createElement('input');
+  inputPassword.setAttribute('id', 'inputPassword'); // Id password
   inputPassword.className = 'inputPassword';
   inputPassword.placeholder = 'Contraseña';
   divInputs.appendChild(divTextEmail);
@@ -49,7 +64,7 @@ export const Login = () => {
   divInputs.appendChild(divTextForgotPassword);
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'buttonLogin';
-  // buttonLogin.addEventListener('click', () => onNavigate('/home'));
+  buttonLogin.addEventListener('click', () => loginEmailPassword());
   buttonLogin.setAttribute('type', 'button');
   const buttonLoginText = document.createTextNode('Iniciar Sesión');
   buttonLogin.appendChild(buttonLoginText);

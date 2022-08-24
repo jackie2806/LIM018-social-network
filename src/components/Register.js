@@ -4,6 +4,7 @@ import { registerUser } from '../lib/index.js';
 
 const Register = {
   formRegister: document.createElement('form'),
+
   createHTML: function() {
     this.formRegister.innerHTML = '';
     const divContainer = document.createElement('div');
@@ -23,13 +24,14 @@ const Register = {
     const divLogoRegister = document.createElement('div');
     divLogoRegister.className = 'divLogoRegister';
     const imgLogo = document.createElement('img');
-    imgLogo.className ='imgLogo';
+    imgLogo.className = 'imgLogo';
     imgLogo.src = '/img/logo.png';
     imgLogo.alt = 'logo';
     divLogoRegister.appendChild(imgLogo);
     divRegister.appendChild(divLogoRegister)
     this.formRegister.className = 'formulario';
   
+
     //name
     const divName = document.createElement('div');
     divName.className = 'divName inputRegister';
@@ -73,6 +75,26 @@ const Register = {
     divImgEmail.appendChild(imgEmail);
     divEmail.appendChild(inputEmail);
     this.formRegister.appendChild(divEmail);
+  
+    //telefono
+    const divPhone = document.createElement('div');
+    divPhone.className = 'divPhone inputRegister';
+    const inputPhone = document.createElement('input')
+    inputPhone.className = 'inputForm no-arrow';
+    inputPhone.placeholder = 'Teléfono';
+    inputPhone.autocomplete = 'off';
+    inputPhone.required = true;
+    inputPhone.type = 'number'
+    const divImgPhone = document.createElement('div');
+    divImgPhone.className = 'divImgPhone'
+    const imgPhone = document.createElement('img');
+    imgPhone.className = 'imgPhone';
+    imgPhone.src = '/img/Vector-phone.png';
+    imgPhone.alt = 'logoPhone';
+    divPhone.appendChild(divImgPhone);
+    divImgPhone.appendChild(imgPhone);
+    divPhone.appendChild(inputPhone);
+    this.formRegister.appendChild(divPhone);
 
     //contrasena
     const divContrasena = document.createElement('div');
@@ -98,7 +120,7 @@ const Register = {
 
     this.crearMostrarContrasena(inputContrasena, imgContrasena)
 
-    //confirmar contrasena
+    // confirmar contrasena
     const divConfirmContrasena = document.createElement('div');
     divConfirmContrasena.className = 'divConfirmContrasena inputRegister';
     const inputConfirmContrasena = document.createElement('input')
@@ -108,7 +130,7 @@ const Register = {
     inputConfirmContrasena.maxLength = '8';
     inputConfirmContrasena.id = 'ConfirmPassword';
     inputConfirmContrasena.type = 'password';
-    inputConfirmContrasena.required = true ;
+    inputConfirmContrasena.required = true;
     const divImgContrasena2 = document.createElement('div');
     divImgContrasena2.className = 'divImgContrasena2';
     const imgConfirmContrasena = document.createElement('img');
@@ -128,7 +150,7 @@ const Register = {
     const inputButtonRegister = document.createElement('button')
     inputButtonRegister.type = 'submit';
     inputButtonRegister.id = 'buttonRegister';
-    inputButtonRegister.textContent ='Registrar';
+    inputButtonRegister.textContent = 'Registrar';
     buttonRegister.appendChild(inputButtonRegister);
     this.formRegister.appendChild(buttonRegister);
 
@@ -150,25 +172,28 @@ const Register = {
     this.verificarSubmit()
 
     return divContainer
+
   },
-  crearMostrarContrasena: function(input, activador) {
+  crearMostrarContrasena: function (input, activador) {
     activador.addEventListener('click', (evt) => {
-      input.type = (input.type === 'password' ? 'text' : 'password')
-    })
+      input.type = (input.type === 'password' ? 'text' : 'password');
+    });
   },
   // logica de validacion post submit (contraseña)
-  verificarSubmit: function() {
+  verificarSubmit: function () {
     const verificarContrasenas = (evt) => {
+
       const inputPassword = evt.target.querySelector('#Password').value
       const inputConfirmPassword = evt.target.querySelector('#ConfirmPassword').value
   // para la lógica de las contraseñas
+
       if (inputPassword === inputConfirmPassword) {
-        alert("contrasenas igualitas")
-        return true
+        alert("contrasenas igualitas");
+        return true; // se registra el usuario en Firebase 
       } else {
-        alert ('las contraseñas no coinciden')
-        return false
-      }  
+        alert('las contraseñas no coinciden');
+        return false;
+      }
     }
 
     const verificarCorreoRegistado = (evt) => {
@@ -181,23 +206,28 @@ const Register = {
 
       if (verificarContrasenas(evt) === false) return
       if (verificarCorreoRegistado(evt) === false) return
-      
+
       // En este punto ya todas las validaciones estan hechas
+
       
       const email = evt.target.querySelector('#email').value
       const password = evt.target.querySelector('#Password').value
       const user = await registerUser(email, password)
       
+
     }
 
     // Validar
-    this.formRegister.addEventListener('submit', validaciones)
+    this.formRegister.addEventListener('submit', validaciones);
   }
 };
 
 const init = () => {
+
   const html = Register.createHTML()
   return html
+
 }
 
-export default init
+export default init;
+console.log(init);
