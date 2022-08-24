@@ -1,10 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 
-const logear = (user, pwd) => {
-  return true
-}
-
 export const Login = () => {
   const divLogin = document.createElement('div');
   divLogin.className = 'divLogin';
