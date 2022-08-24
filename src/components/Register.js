@@ -1,6 +1,18 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-unresolved
+import { auth, createUserWithEmailAndPassword } from '../firebase/methods.js';
+
+const createAccount = async () => {
+  const email = document.getElementById('inputEmail').value;
+  const password = document.getElementById('inputPassword').value;
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    console.log(userCredential.user);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const Register = () => {
   // flecha
@@ -104,7 +116,7 @@ export const Register = () => {
   buttonRegister.className = 'buttonRegister inputForm';
   const inputButtonRegister = document.createElement('button');
   inputButtonRegister.setAttribute('id', 'buttonRegister'); // button Register
-  // inputButtonRegister.addEventListener('click', () => addUser());
+  inputButtonRegister.addEventListener('click', () => createAccount());
   inputButtonRegister.type = 'button';
   inputButtonRegister.id = 'buttonRegister';
   inputButtonRegister.textContent = 'Registrar';

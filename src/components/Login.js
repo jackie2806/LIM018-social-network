@@ -1,5 +1,19 @@
-// eslint-disable-next-line import/no-cycle
+// eslint-disable-next-line import/no-cycle, import/no-duplicates
 import { onNavigate } from '../main.js';
+// eslint-disable-next-line import/no-unresolved
+// import { Home } from './components/Home.js';
+import { auth, signInWithEmailAndPassword } from '../firebase/methods.js';
+
+const loginEmailPassword = async () => {
+  const email = document.getElementById('inputEmail').value;
+  const password = document.getElementById('inputPassword').value;
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    console.log(userCredential.user); // usar un if para validar en userCredential.user
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const Login = () => {
   const divLogin = document.createElement('div');
@@ -28,12 +42,14 @@ export const Login = () => {
   divTextEmail.textContent = 'Ingresa tu correo electrónico';
   const inputEmail = document.createElement('input');
   inputEmail.className = 'inputEmail';
+  inputEmail.setAttribute('id', 'inputEmail'); // id
   inputEmail.placeholder = 'ejemplo@gmail.com';
   const divTextPassword = document.createElement('div');
   divTextPassword.className = 'divTextPassword';
   divTextPassword.textContent = 'Ingresa tu contraseña';
   const inputPassword = document.createElement('input');
   inputPassword.className = 'inputPassword';
+  inputPassword.setAttribute('id', 'inputPassword'); // Id
   inputPassword.placeholder = 'Contraseña';
   divInputs.appendChild(divTextEmail);
   divInputs.appendChild(inputEmail);
@@ -45,7 +61,7 @@ export const Login = () => {
   divInputs.appendChild(divTextForgotPassword);
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'buttonLogin';
-  // buttonLogin.addEventListener('click', () => onNavigate('/home'));
+  buttonLogin.addEventListener('click', () => loginEmailPassword());
   buttonLogin.setAttribute('type', 'button');
   const buttonLoginText = document.createTextNode('Iniciar Sesión');
   buttonLogin.appendChild(buttonLoginText);
