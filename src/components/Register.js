@@ -5,6 +5,8 @@ import { registerUser } from '../lib/index.js';
 const Register = {
   formRegister: document.createElement('form'),
   createHTML: function() {
+    this.formRegister.innerHTML = '';
+    const divContainer = document.createElement('div');
     const divRegister = document.createElement('div');
     divRegister.className = 'divRegister'
     const divArrowRegister = document.createElement('div');
@@ -26,7 +28,7 @@ const Register = {
     imgLogo.alt = 'logo';
     divLogoRegister.appendChild(imgLogo);
     divRegister.appendChild(divLogoRegister)
-    this.formRegister.className = 'formulario'
+    this.formRegister.className = 'formulario';
   
     //name
     const divName = document.createElement('div');
@@ -50,7 +52,6 @@ const Register = {
     divName.appendChild(inputName);
     inputName.appendChild(spanName);
     this.formRegister.appendChild(divName);
-    divRegister.appendChild(this.formRegister);
 
     //email
     const divEmail = document.createElement('div');
@@ -59,9 +60,9 @@ const Register = {
     inputEmail.className = 'inputForm';
     inputEmail.placeholder = 'ejemplo@gmail.com';
     inputEmail.autocomplete = 'off';
-    inputEmail.id = 'email'
+    inputEmail.id = 'email';
     inputEmail.required = true;
-    inputEmail.type = 'email'
+    inputEmail.type = 'email';
     const divImgEmail = document.createElement('div');
     divImgEmail.className = 'divImgEmail'
     const imgEmail = document.createElement('img');
@@ -72,7 +73,6 @@ const Register = {
     divImgEmail.appendChild(imgEmail);
     divEmail.appendChild(inputEmail);
     this.formRegister.appendChild(divEmail);
-    divRegister.appendChild(this.formRegister);
   
     //telefono
     const divPhone = document.createElement('div');
@@ -93,7 +93,6 @@ const Register = {
     divImgPhone.appendChild(imgPhone);
     divPhone.appendChild(inputPhone);
     this.formRegister.appendChild(divPhone);
-    divRegister.appendChild(this.formRegister);
 
     //contrasena
     const divContrasena = document.createElement('div');
@@ -116,7 +115,6 @@ const Register = {
     divImgContrasena.appendChild(imgContrasena);
     divContrasena.appendChild(inputContrasena);
     this.formRegister.appendChild(divContrasena);
-    divRegister.appendChild(this.formRegister);
 
     this.crearMostrarContrasena(inputContrasena, imgContrasena)
 
@@ -141,7 +139,6 @@ const Register = {
     divImgContrasena2.appendChild(imgConfirmContrasena);
     divConfirmContrasena.appendChild(inputConfirmContrasena);
     this.formRegister.appendChild(divConfirmContrasena);
-    divRegister.appendChild(this.formRegister);
 
     this.crearMostrarContrasena(inputConfirmContrasena, imgConfirmContrasena)
 
@@ -154,7 +151,6 @@ const Register = {
     inputButtonRegister.textContent ='Registrar';
     buttonRegister.appendChild(inputButtonRegister);
     this.formRegister.appendChild(buttonRegister);
-    divRegister.appendChild(this.formRegister);
 
     // texto cuando ya tienen cuenta
     const divRegisterText = document.createElement('div');
@@ -164,13 +160,16 @@ const Register = {
     aLogin.textContent = '¿Ya tienes una cuenta? Haz click aquí';
 
     // const loginText = document.createTextNode('¿Ya tienes una cuenta? Haz click aquí');
+    divRegister.appendChild(this.formRegister);
     divRegisterText.appendChild(aLogin);
     divRegisterText.addEventListener('click', () => onNavigate('/login'));
     divRegister.appendChild(divRegisterText);
 
+    divContainer.appendChild(divRegister)
+
     this.verificarSubmit()
 
-    return divRegister
+    return divContainer
   },
   crearMostrarContrasena: function(input, activador) {
     activador.addEventListener('click', (evt) => {
@@ -182,7 +181,7 @@ const Register = {
     const verificarContrasenas = (evt) => {
       const inputPassword = evt.target.querySelector('#Password').value
       const inputConfirmPassword = evt.target.querySelector('#ConfirmPassword').value
-  
+  // para la lógica de las contraseñas
       if (inputPassword === inputConfirmPassword) {
         alert("contrasenas igualitas")
         return true
@@ -208,7 +207,7 @@ const Register = {
       const email = evt.target.querySelector('#email').value
       const password = evt.target.querySelector('#Password').value
       const user = await registerUser(email, password)
-      console.log(user)
+      
     }
 
     // Validar
@@ -217,7 +216,8 @@ const Register = {
 };
 
 const init = () => {
-  return Register.createHTML()
+  const html = Register.createHTML()
+  return html
 }
 
 export default init
