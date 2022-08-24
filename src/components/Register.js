@@ -159,7 +159,7 @@ const Register = {
     aLogin.className = 'aLogin';
     aLogin.textContent = '¿Ya tienes una cuenta? Haz click aquí';
 
-    // const loginText = document.createTextNode('¿Ya tienes una cuenta? Haz click aquí');
+    const loginText = document.createTextNode('¿Ya tienes una cuenta? Haz click aquí');
     divRegister.appendChild(this.formRegister);
     divRegisterText.appendChild(aLogin);
     divRegisterText.addEventListener('click', () => onNavigate('/login'));
