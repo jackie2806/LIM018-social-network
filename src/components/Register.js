@@ -1,6 +1,18 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
-import { registerUser } from '../lib/index.js';
+import { auth, createUserWithEmailAndPassword } from '../firebase/methods.js';
+
+const registerUser = async (email, password) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    console.log(userCredential.user);
+
+    return userCredential;
+  } catch (error) {
+    console.error(error.code);
+    console.error(error.message);
+  }
+}
 
 const Register = {
   formRegister: document.createElement('form'),
