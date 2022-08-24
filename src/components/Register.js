@@ -73,26 +73,6 @@ const Register = {
     divImgEmail.appendChild(imgEmail);
     divEmail.appendChild(inputEmail);
     this.formRegister.appendChild(divEmail);
-  
-    //telefono
-    const divPhone = document.createElement('div');
-    divPhone.className = 'divPhone inputRegister';
-    const inputPhone = document.createElement('input')
-    inputPhone.className = 'inputForm no-arrow';
-    inputPhone.placeholder = 'Teléfono';
-    inputPhone.autocomplete = 'off';
-    inputPhone.required = true;
-    inputPhone.type = 'number'
-    const divImgPhone = document.createElement('div');
-    divImgPhone.className = 'divImgPhone'
-    const imgPhone = document.createElement('img');
-    imgPhone.className = 'imgPhone';
-    imgPhone.src = '/img/Vector-phone.png';
-    imgPhone.alt = 'logoPhone';
-    divPhone.appendChild(divImgPhone);
-    divImgPhone.appendChild(imgPhone);
-    divPhone.appendChild(inputPhone);
-    this.formRegister.appendChild(divPhone);
 
     //contrasena
     const divContrasena = document.createElement('div');
