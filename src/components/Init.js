@@ -9,7 +9,7 @@ export const Init = () => {
   divInitImg.className = 'divInitImg';
   const imgInitLogo = document.createElement('img');
   imgInitLogo.className = 'imgInitLogo';
-  imgInitLogo.src = '../img/logo.png';
+  imgInitLogo.src = '../img/logoMobile.png';
   imgInitLogo.alt = 'Logo';
   divInitImg.appendChild(imgInitLogo);
   // botones

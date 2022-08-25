@@ -21,5 +21,4 @@ export const registerUser = async (email, password) => {
     console.error(error.code);
     console.error(error.message);
   }
-}
- */
+} */ 

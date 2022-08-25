@@ -2,17 +2,19 @@
 import { onNavigate } from '../main.js';
 import { auth, signInWithEmailAndPassword } from '../firebase/methods.js';
 // eslint-disable-next-line import/no-unresolved
-// import { Home } from "./Home.js";
+import { Home } from './Home.js';
 
 const loginEmailPassword = async () => {
   const email = document.getElementById('inputEmail').value;
   const password = document.getElementById('inputPassword').value;
   try {
+    console.log('soy try');
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    /*  if (userCredential.user === email && password) {
-      return Home();
-    } */
-    console.log(userCredential.user);
+    if (userCredential.user) {
+      console.log('Aquí dice Arkelly', Home());
+      return Home(); // cómo mostrar el Home con su ruta
+    }
+    console.log('Soy un user', userCredential.user);
   } catch (error) {
     console.log(error);
   }
@@ -34,7 +36,7 @@ export const Login = () => {
   divLoginImg.className = 'divLoginImg';
   const imgLoginLogo = document.createElement('img');
   imgLoginLogo.className = 'imgLoginLogo';
-  imgLoginLogo.src = '../img/logo.png';
+  imgLoginLogo.src = '../img/logoMobile.png';
   imgLoginLogo.alt = 'Logo';
   divLoginImg.appendChild(imgLoginLogo);
   // inputs
@@ -65,6 +67,7 @@ export const Login = () => {
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'buttonLogin';
   buttonLogin.addEventListener('click', () => loginEmailPassword());
+  buttonLogin.addEventListener('click', () => onNavigate('/home'));
   buttonLogin.setAttribute('type', 'button');
   const buttonLoginText = document.createTextNode('Iniciar Sesión');
   buttonLogin.appendChild(buttonLoginText);
