@@ -37,7 +37,7 @@ const Register = {
     divLogoRegister.className = 'divLogoRegister';
     const imgLogo = document.createElement('img');
     imgLogo.className = 'imgLogo';
-    imgLogo.src = '/img/logo.png';
+    imgLogo.src = '/img/logoMobile.png';
     imgLogo.alt = 'logo';
     divLogoRegister.appendChild(imgLogo);
     divRegister.appendChild(divLogoRegister)
