@@ -1,6 +1,18 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
-import { registerUser } from '../lib/index.js';
+import { auth, createUserWithEmailAndPassword } from '../firebase/methods.js';
+
+const registerUser = async (email, password) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    console.log(userCredential.user);
+
+    return userCredential;
+  } catch (error) {
+    console.error(error.code);
+    console.error(error.message);
+  }
+}
 
 const Register = {
   formRegister: document.createElement('form'),
@@ -75,28 +87,7 @@ const Register = {
     divImgEmail.appendChild(imgEmail);
     divEmail.appendChild(inputEmail);
     this.formRegister.appendChild(divEmail);
-  
-    //telefono
-    const divPhone = document.createElement('div');
-    divPhone.className = 'divPhone inputRegister';
-    const inputPhone = document.createElement('input')
-    inputPhone.className = 'inputForm no-arrow';
-    inputPhone.placeholder = 'Teléfono';
-    inputPhone.autocomplete = 'off';
-    inputPhone.required = true;
-    inputPhone.type = 'number'
-    const divImgPhone = document.createElement('div');
-    divImgPhone.className = 'divImgPhone'
-    const imgPhone = document.createElement('img');
-    imgPhone.className = 'imgPhone';
-    imgPhone.src = '/img/Vector-phone.png';
-    imgPhone.alt = 'logoPhone';
-    divPhone.appendChild(divImgPhone);
-    divImgPhone.appendChild(imgPhone);
-    divPhone.appendChild(inputPhone);
-    this.formRegister.appendChild(divPhone);
-
-    //contrasena
+     // contrasena
     const divContrasena = document.createElement('div');
     divContrasena.className = 'divContrasena inputRegister';
     const inputContrasena = document.createElement('input')

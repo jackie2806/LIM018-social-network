@@ -16,6 +16,7 @@ export const Home = () => {
   imgSandwich.src = '/img/sandwich.png';
   imgSandwich.alt = 'logo-sandwich';
   imgSandwich.className = 'imgSandwich';
+
   divLogoSandwich.appendChild(imgSandwich);
   divLogoHome.appendChild(imgLogoHome);
   divMenu.appendChild(divLogoHome);
@@ -24,19 +25,41 @@ export const Home = () => {
   // table
   const divContainer = document.createElement('div');
   divContainer.className = 'container';
+  divHome.appendChild(divContainer);
   // ProfilePost
-  const divBoxProfile = document.createElement('div');
-  divBoxProfile.className = 'profilePost';
+  const formBoxProfile = document.createElement('form');
+  formBoxProfile.className = 'profilePost';
   const divUserName = document.createElement('div');
+  divUserName.className = 'userName';
+  const spamUser = document.createElement ('spam')
+  spamUser.className = 'spamuser';
   const divPost = document.createElement('div');
-  const buttonPublish = document.createElement('button');
+  divPost.className = 'divPost';
+  const inputPost = document.createElement('input')
+  inputPost.className = 'post'
+  inputPost.placeholder = '¿Qué estás pensando?';
+  const divbuttonPublish = document.createElement('div');
+  divbuttonPublish.className = 'buttonPublish'
+  const buttonPublish = document.createElement('button')
+  buttonPublish.textContent = 'Publicar';
+  buttonPublish.className = 'buttonPublish';
+
+  formBoxProfile.appendChild(divUserName);
+  formBoxProfile.appendChild(divPost);
+  formBoxProfile.appendChild(divbuttonPublish);
+  divUserName.appendChild(spamUser);
+  divPost.appendChild(inputPost);
+  divbuttonPublish.appendChild(buttonPublish)
+  divContainer.appendChild(formBoxProfile);
+  
+
 
   // Pizarra dinámica
-  const divBoxPost = document.createElement('div');
-  const divBoxPublish = document.createElement('div');
-  divContainer.appendChild(divBoxMain);
-  divBoxMain.appendChild(divBoxPost);
-  divBoxMain.appendChild(divBoxPublish);
+  // const divBoxPost = document.createElement('div');
+  // const divBoxPublish = document.createElement('div');
+  // divContainer.appendChild(divBoxMain);
+  // divBoxMain.appendChild(divBoxPost);
+  // divBoxMain.appendChild(divBoxPublish);
   // console.log('estoy en el Home');
   return divHome;
 };

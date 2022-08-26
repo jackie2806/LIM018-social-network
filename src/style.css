@@ -269,3 +269,36 @@ body {
     cursor: pointer;
    }
 
+/* Home -  Profile */
+.container {
+  display: flex;
+  flex-direction: column;
+  background: pink;
+  height: auto;
+}
+.menu {
+  display: flex;
+  justify-content: center;
+  background: rgba(245, 179, 52, 0.28);
+}
+.imgSandwich {
+  
+}
+  /* cajita para el posteo */
+.boxProfile {
+  background: rgba(245, 145, 52, 0.46);
+  height: 142px;
+
+}
+/* .userName {
+  height: 1.5rem;
+  background: yellow;
+}
+.divPost {
+  height: 3.5rem;
+  background: green;
+}
+.buttonPublish {
+  height: 1.5rem;
+  background: #F58634;
+} */
