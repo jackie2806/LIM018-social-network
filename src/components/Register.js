@@ -36,7 +36,7 @@ const Register = {
     const divLogoRegister = document.createElement('div');
     divLogoRegister.className = 'divLogoRegister';
     const imgLogo = document.createElement('img');
-    imgLogo.className = 'imgLogo';
+    imgLogo.className = 'imgLogoRegister';
     imgLogo.src = '/img/logoMobile.png';
     imgLogo.alt = 'logo';
     divLogoRegister.appendChild(imgLogo);
@@ -94,7 +94,7 @@ const Register = {
     inputContrasena.className = 'inputForm';
     inputContrasena.placeholder = 'Cree una contrasena';
     inputContrasena.autocomplete = 'off';
-    inputContrasena.maxLength = '8';
+    inputContrasena.minLength = '6';
     inputContrasena.type = 'password'
     inputContrasena.id = 'Password';
     inputContrasena.required = true;
@@ -118,7 +118,7 @@ const Register = {
     inputConfirmContrasena.className = 'inputForm';
     inputConfirmContrasena.placeholder = 'Confime la contrasena';
     inputConfirmContrasena.autocomplete = 'off';
-    inputConfirmContrasena.maxLength = '8';
+    inputConfirmContrasena.minLength = '6';
     inputConfirmContrasena.id = 'ConfirmPassword';
     inputConfirmContrasena.type = 'password';
     inputConfirmContrasena.required = true;
@@ -221,4 +221,3 @@ const init = () => {
 }
 
 export default init;
-console.log(init);
