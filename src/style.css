@@ -270,35 +270,54 @@ body {
    }
 
 /* Home -  Profile */
-.container {
-  display: flex;
-  flex-direction: column;
-  background: pink;
-  height: auto;
-}
 .menu {
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
   background: rgba(245, 179, 52, 0.28);
+  width: 37.5rem;
+  height: 5.8rem;
+  padding: 1rem;
+}
+.imgLogo {
+  display: flex;
+  height: 4.9rem;
+  width: 19.2rem;
 }
 .imgSandwich {
-  
+  padding: 1rem;
 }
   /* cajita para el posteo */
-.boxProfile {
-  background: rgba(245, 145, 52, 0.46);
-  height: 142px;
-
+.container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 37.5rem;
+  }
+.profilePost {
+  margin: 0 auto;
+  height: 14.2rem;
+  width: 34.4rem;
+  margin: 0.5rem;
 }
-/* .userName {
-  height: 1.5rem;
+.userName {
+  height: 2rem;
   background: yellow;
+  
 }
-.divPost {
-  height: 3.5rem;
-  background: green;
+.post {
+  display: flex;
+  align-items: center;
+  height: 10.2rem;
+  width: 34.4rem;
+  border: 0;
+  background-color: rgba(245, 145, 52, 0.88);
 }
 .buttonPublish {
-  height: 1.5rem;
+  height: 2rem;
   background: #F58634;
-} */
+  display: flex;
+  border: 0;
+  justify-content: end;
+}
