@@ -23,38 +23,37 @@ const signInGoogle = () => {
   /* const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInwithPopup(provider); */
   signInWithPopup(auth, provider)
-  .then((result) => {
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    const user = result.user;
+    .then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
 
     // console.log(user);
-  }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // const email = error.customData.email;
-    // const credential = GoogleAuthProvider.credentialFromError(error);
-
-  })
-}
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // const email = error.customData.email;
+      // const credential = GoogleAuthProvider.credentialFromError(error);
+    });
+};
 
 export const Login = () => {
   const divLogin = document.createElement('div');
   divLogin.className = 'divLogin';
   // Logo
-  const divArrowLogin = document.createElement('div');
-  divArrowLogin.className = 'divArrowLogin';
+  const divArrowBack = document.createElement('div');
+  divArrowBack.className = 'divArrowBack';
   const arrowImgLogin = document.createElement('img');
   arrowImgLogin.className = 'arrowImgLogin';
   arrowImgLogin.addEventListener('click', () => onNavigate('/'));
-  arrowImgLogin.src = '../img/arrow.png';
+  arrowImgLogin.src = '/img/arrowregister.png';
   arrowImgLogin.alt = 'ArrowLeft';
-  divArrowLogin.appendChild(arrowImgLogin);
+  divArrowBack.appendChild(arrowImgLogin);
   const divLoginImg = document.createElement('div');
   divLoginImg.className = 'divLoginImg';
   const imgLoginLogo = document.createElement('img');
   imgLoginLogo.className = 'imgLoginLogo';
-  imgLoginLogo.src = '../img/logoMobile.png';
+  imgLoginLogo.src = '/img/logoMobile.png';
   imgLoginLogo.alt = 'Logo';
   divLoginImg.appendChild(imgLoginLogo);
   // inputs
@@ -78,10 +77,6 @@ export const Login = () => {
   divInputs.appendChild(inputEmail);
   divInputs.appendChild(divTextPassword);
   divInputs.appendChild(inputPassword);
-  const divTextForgotPassword = document.createElement('div');
-  divTextForgotPassword.className = 'divForgotPassword';
-  divTextForgotPassword.textContent = '¿Olvidaste tu contraseña?';
-  divInputs.appendChild(divTextForgotPassword);
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'buttonLogin';
   buttonLogin.addEventListener('click', () => loginEmailPassword());
@@ -103,7 +98,7 @@ export const Login = () => {
   buttonGoogle.appendChild(buttonGoogleText);
   divLoginOthers.appendChild(text);
   divLoginOthers.appendChild(buttonGoogle);
-  divLogin.appendChild(divArrowLogin);
+  divLogin.appendChild(divArrowBack);
   divLogin.appendChild(divLoginImg);
   divLogin.appendChild(divInputs);
   divLogin.appendChild(divLoginOthers);

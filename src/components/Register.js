@@ -22,21 +22,21 @@ const Register = {
     const divContainer = document.createElement('div');
     const divRegister = document.createElement('div');
     divRegister.className = 'divRegister'
-    const divArrowRegister = document.createElement('div');
-    divArrowRegister.className = 'divArrowRegister';
+    const divArrowBack = document.createElement('div');
+    divArrowBack.className = 'divArrowBack';
     const arrowImgRegister = document.createElement('img');
     arrowImgRegister.className = 'arrowImgRegister';
     arrowImgRegister.addEventListener('click', () => onNavigate('/'));
     arrowImgRegister.src = '/img/arrowregister.png';
     arrowImgRegister.alt = 'ArrowLeft';
-    divArrowRegister.appendChild(arrowImgRegister);
-    divRegister.appendChild(divArrowRegister);
+    divArrowBack.appendChild(arrowImgRegister);
+    divRegister.appendChild(divArrowBack);
 
     //logo
     const divLogoRegister = document.createElement('div');
     divLogoRegister.className = 'divLogoRegister';
     const imgLogo = document.createElement('img');
-    imgLogo.className = 'imgLogo';
+    imgLogo.className = 'imgLogoRegister';
     imgLogo.src = '/img/logoMobile.png';
     imgLogo.alt = 'logo';
     divLogoRegister.appendChild(imgLogo);
@@ -94,7 +94,7 @@ const Register = {
     inputContrasena.className = 'inputForm';
     inputContrasena.placeholder = 'Cree una contrasena';
     inputContrasena.autocomplete = 'off';
-    inputContrasena.maxLength = '8';
+    inputContrasena.minLength = '6';
     inputContrasena.type = 'password'
     inputContrasena.id = 'Password';
     inputContrasena.required = true;
@@ -118,7 +118,7 @@ const Register = {
     inputConfirmContrasena.className = 'inputForm';
     inputConfirmContrasena.placeholder = 'Confime la contrasena';
     inputConfirmContrasena.autocomplete = 'off';
-    inputConfirmContrasena.maxLength = '8';
+    inputConfirmContrasena.minLength = '6';
     inputConfirmContrasena.id = 'ConfirmPassword';
     inputConfirmContrasena.type = 'password';
     inputConfirmContrasena.required = true;
@@ -221,4 +221,3 @@ const init = () => {
 }
 
 export default init;
-console.log(init);
