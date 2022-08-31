@@ -27,12 +27,14 @@ const signInGoogle = () => {
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     const user = result.user;
-    console.log(user);
+
+    // console.log(user);
   }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    const email = error.customData.email;
-    const credential = GoogleAuthProvider.credentialFromError(error);
+    // const email = error.customData.email;
+    // const credential = GoogleAuthProvider.credentialFromError(error);
+
   })
 }
 
@@ -94,6 +96,7 @@ export const Login = () => {
   text.textContent = '-O-';
   const buttonGoogle = document.createElement('button');
   buttonGoogle.addEventListener('click', () => signInGoogle());
+  buttonGoogle.addEventListener('click', () => onNavigate('/home'));
   buttonGoogle.className = 'buttonGoogle';
   buttonGoogle.setAttribute('type', 'button');
   const buttonGoogleText = document.createTextNode('Iniciar con Google');
