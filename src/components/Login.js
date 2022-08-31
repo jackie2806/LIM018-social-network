@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
-import { auth, signInWithEmailAndPassword } from '../firebase/methods.js';
+import { auth, signInWithEmailAndPassword, signInWithPopup, provider } from '../firebase/methods.js';
 // eslint-disable-next-line import/no-unresolved
 import { Home } from './Home.js';
 
@@ -19,6 +19,22 @@ const loginEmailPassword = async () => {
     console.log(error);
   }
 };
+const signInGoogle = () => {
+  /* const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInwithPopup(provider); */
+  signInWithPopup(auth, provider)
+  .then((result) => {
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    const user = result.user;
+    console.log(user);
+  }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    const email = error.customData.email;
+    const credential = GoogleAuthProvider.credentialFromError(error);
+  })
+}
 
 export const Login = () => {
   const divLogin = document.createElement('div');
@@ -77,6 +93,7 @@ export const Login = () => {
   const text = document.createElement('div');
   text.textContent = '-O-';
   const buttonGoogle = document.createElement('button');
+  buttonGoogle.addEventListener('click', () => signInGoogle());
   buttonGoogle.className = 'buttonGoogle';
   buttonGoogle.setAttribute('type', 'button');
   const buttonGoogleText = document.createTextNode('Iniciar con Google');
