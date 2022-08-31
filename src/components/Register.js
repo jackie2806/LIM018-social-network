@@ -22,15 +22,15 @@ const Register = {
     const divContainer = document.createElement('div');
     const divRegister = document.createElement('div');
     divRegister.className = 'divRegister'
-    const divArrowRegister = document.createElement('div');
-    divArrowRegister.className = 'divArrowRegister';
+    const divArrowBack = document.createElement('div');
+    divArrowBack.className = 'divArrowBack';
     const arrowImgRegister = document.createElement('img');
     arrowImgRegister.className = 'arrowImgRegister';
     arrowImgRegister.addEventListener('click', () => onNavigate('/'));
     arrowImgRegister.src = '/img/arrowregister.png';
     arrowImgRegister.alt = 'ArrowLeft';
-    divArrowRegister.appendChild(arrowImgRegister);
-    divRegister.appendChild(divArrowRegister);
+    divArrowBack.appendChild(arrowImgRegister);
+    divRegister.appendChild(divArrowBack);
 
     //logo
     const divLogoRegister = document.createElement('div');

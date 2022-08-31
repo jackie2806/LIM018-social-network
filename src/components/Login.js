@@ -24,14 +24,14 @@ export const Login = () => {
   const divLogin = document.createElement('div');
   divLogin.className = 'divLogin';
   // Logo
-  const divArrowLogin = document.createElement('div');
-  divArrowLogin.className = 'divArrowLogin';
+  const divArrowBack = document.createElement('div');
+  divArrowBack.className = 'divArrowBack';
   const arrowImgLogin = document.createElement('img');
   arrowImgLogin.className = 'arrowImgLogin';
   arrowImgLogin.addEventListener('click', () => onNavigate('/'));
   arrowImgLogin.src = '/img/arrowregister.png';
   arrowImgLogin.alt = 'ArrowLeft';
-  divArrowLogin.appendChild(arrowImgLogin);
+  divArrowBack.appendChild(arrowImgLogin);
   const divLoginImg = document.createElement('div');
   divLoginImg.className = 'divLoginImg';
   const imgLoginLogo = document.createElement('img');
@@ -79,7 +79,7 @@ export const Login = () => {
   buttonGoogle.appendChild(buttonGoogleText);
   divLoginOthers.appendChild(text);
   divLoginOthers.appendChild(buttonGoogle);
-  divLogin.appendChild(divArrowLogin);
+  divLogin.appendChild(divArrowBack);
   divLogin.appendChild(divLoginImg);
   divLogin.appendChild(divInputs);
   divLogin.appendChild(divLoginOthers);
