@@ -15,19 +15,13 @@ import { app } from './config.js';
 export const dataBase = getFirestore(app);
 export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
-const isLoggedIn = () => {
-  console.log(getAuth(app))
+export const isLoggedIn = () => {
+  console.log(getAuth(app));
   return getAuth(app).currentUser;
 };
 
-const dataBase = getFirestore(app);
-const auth = getAuth(app);
 export {
-  dataBase,
-  auth,
-  isLoggedIn,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
 };
-

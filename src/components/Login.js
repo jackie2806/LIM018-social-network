@@ -80,7 +80,7 @@ export const Login = () => {
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'buttonLogin';
   buttonLogin.addEventListener('click', () => loginEmailPassword());
-  buttonLogin.addEventListener('click', () => onNavigate('/home'));
+  buttonLogin.addEventListener('click', () => onNavigate('/home')); // Ver Firebase / no debería pasar al home hasta que se verifique los imputs validados
   buttonLogin.setAttribute('type', 'button');
   const buttonLoginText = document.createTextNode('Iniciar Sesión');
   buttonLogin.appendChild(buttonLoginText);

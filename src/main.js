@@ -26,8 +26,8 @@ const verificarAcceso = (pathname) => {
     case '/home':
       // esta en /home y no esta logeado
       if (estoyLogeado === null) {
-        window.location.href = '/';
-      }
+         window.location.href = '/';
+      }   
       break;
   }
 };
@@ -49,7 +49,7 @@ export const onNavigate = (pathname) => {
 
 // logica de inicio
 const component = routes[window.location.pathname];
-verificarAcceso(window.location.pathname);
+// verificarAcceso(window.location.pathname); // funciona validar usuario logeado
 
 // logica por si cambia la navegacion por el navegador (atras, adelante o f5)
 window.onpopstate = () => {

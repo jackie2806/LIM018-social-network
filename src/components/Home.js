@@ -1,5 +1,6 @@
 // lógica
 
+//
 export const Home = () => {
   const divHome = document.createElement('div');
   // Logo
@@ -32,7 +33,7 @@ export const Home = () => {
   const divUserName = document.createElement('div');
   divUserName.className = 'userName';
   divUserName.textContent = 'NOMBRE DE LA PERSONA LOGEADA';
-  const spamUser = document.createElement ('spam');
+  const spamUser = document.createElement('spam');
   spamUser.className = 'spamuser';
   const divPost = document.createElement('div');
   divPost.className = 'divPostHome';
@@ -57,7 +58,7 @@ export const Home = () => {
   formPizarra.className = 'profilePizarra';
   const divPizarraName = document.createElement('div');
   divPizarraName.className = 'pizarraName';
-  const spamUserPizarra = document.createElement ('spam');
+  const spamUserPizarra = document.createElement('spam');
   spamUserPizarra.className = 'spamPizarra';
   const divPostPizarra = document.createElement('div');
   divPostPizarra.className = 'divPostBoard';
@@ -69,7 +70,7 @@ export const Home = () => {
   const buttonLike = document.createElement('button');
   buttonLike.textContent = '';
   buttonLike.className = 'buttonLike buttonBoard';
-  const imgPlane = document.createElement ('img');
+  const imgPlane = document.createElement('img');
   imgPlane.src = '/img/planeLike.png';
   imgPlane.className = 'imgPlane';
   const buttonEdit = document.createElement('button');
@@ -89,7 +90,6 @@ export const Home = () => {
   divButtons.appendChild(buttonEdit);
   divButtons.appendChild(buttonDelete);
   divContainer.appendChild(formPizarra);
-  
   // const divBoxPost = document.createElement('div');
   // const divBoxPublish = document.createElement('div');
   // divContainer.appendChild(divBoxMain);
