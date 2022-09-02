@@ -31,16 +31,16 @@ export const Home = () => {
   formBoxProfile.className = 'profilePost';
   const divUserName = document.createElement('div');
   divUserName.className = 'userName';
-  divUserName.textContent = 'NOMBRE DE LA PERSONA LOGEADA'
+  divUserName.textContent = 'NOMBRE DE LA PERSONA LOGEADA';
   const spamUser = document.createElement ('spam')
   spamUser.className = 'spamuser';
   const divPost = document.createElement('div');
   divPost.className = 'divPostHome';
   const inputPost = document.createElement('input')
-  inputPost.className = 'postHome'
+  inputPost.className = 'postHome';
   inputPost.placeholder = '¿Qué estás pensando?';
   const divbuttonPublish = document.createElement('div');
-  divbuttonPublish.className = 'divButtonPublish'
+  divbuttonPublish.className = 'divButtonPublish';
   const buttonPublish = document.createElement('button')
   buttonPublish.textContent = 'Publicar';
   buttonPublish.className = 'buttonPublish button';
@@ -62,7 +62,7 @@ export const Home = () => {
   const divPostPizarra = document.createElement('div');
   divPostPizarra.className = 'divPostBoard';
   const inputPizarra = document.createElement('input')
-  inputPizarra.className = 'postBoard'
+  inputPizarra.className = 'postBoard';
   inputPizarra.placeholder = 'aquI irá su comentario';
   const divButtons = document.createElement('div');
   divButtons.className = 'buttons'
@@ -70,8 +70,8 @@ export const Home = () => {
   buttonLike.textContent = '';
   buttonLike.className = 'buttonLike buttonBoard';
   const imgPlane = document.createElement ('img')
-  imgPlane.src = '/img/planeLike.png'
-  imgPlane.className = 'imgPlane'
+  imgPlane.src = '/img/planeLike.png';
+  imgPlane.className = 'imgPlane';
   const buttonEdit = document.createElement('button')
   buttonEdit.textContent = 'editar';
   buttonEdit.className = 'buttonEdit buttonBoard';
@@ -85,7 +85,7 @@ export const Home = () => {
   divPizarraName.appendChild(spamUserPizarra);
   divPostPizarra.appendChild(inputPizarra);
   divButtons.appendChild(buttonLike);
-  buttonLike.appendChild(imgPlane)
+  buttonLike.appendChild(imgPlane);
   divButtons.appendChild(buttonEdit);
   divButtons.appendChild(buttonDelete)
   divContainer.appendChild(formPizarra);

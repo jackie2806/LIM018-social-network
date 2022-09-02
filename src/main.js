@@ -9,7 +9,7 @@ import Register from './components/Register.js';
 // eslint-disable-next-line import/no-unresolved
 import { Home } from './components/Home.js ';
 
-import { isLoggedIn } from './Firebase/methods.js';
+import { isLoggedIn } from './firebase/methods.js';
 
 const divRoot = document.getElementById('root')
 
@@ -17,7 +17,7 @@ const routes = {
   '/': Init,
   '/register': Register,
   '/login': Login,
-  '/home': Home, // ruta protegida
+  '/home': Home, // ruta protegida.
 };
 
 const verificarAcceso = (pathname) => {
@@ -28,7 +28,7 @@ const verificarAcceso = (pathname) => {
       // esta en /home y no esta logeado
       if (estoyLogeado === null) {
         window.location.href = "/"
-      }
+      } 
     break;
   }
 }
@@ -50,7 +50,7 @@ export const onNavigate = (pathname) => {
 
 // logica de inicio
 const component = routes[window.location.pathname];
-verificarAcceso (window.location.pathname)
+// verificarAcceso (window.location.pathname) .... 
 
 // logica por si cambia la navegacion por el navegador (atras, adelante o f5)
 window.onpopstate = () => {

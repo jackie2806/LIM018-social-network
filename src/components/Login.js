@@ -11,7 +11,7 @@ const loginEmailPassword = async () => {
     console.log('soy try');
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     if (userCredential.user) {
-      console.log('Aquí dice Arkelly', Home());
+      console.log('Aquí dice Jackie', Home());
       return Home(); // cómo mostrar el Home con su ruta
     }
     console.log('Soy un user', userCredential.user);
