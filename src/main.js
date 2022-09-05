@@ -26,7 +26,10 @@ const verificarAcceso = (pathname) => {
     case '/home':
       // esta en /home y no esta logeado
       if (estoyLogeado === null) {
-        window.location.href = '/';
+         window.location.href = '/';
+      }
+      if (estoyLogeado){
+        window.location.href = '/Home';
       }
       break;
   }
@@ -34,8 +37,7 @@ const verificarAcceso = (pathname) => {
 
 // logica para navegar en la web por links
 export const onNavigate = (pathname) => {
-  verificarAcceso(pathname);
-
+  // verificarAcceso(pathname);
   window.history.pushState(
     {},
     pathname,
@@ -53,7 +55,7 @@ verificarAcceso(window.location.pathname);
 
 // logica por si cambia la navegacion por el navegador (atras, adelante o f5)
 window.onpopstate = () => {
-  verificarAcceso(window.location.pathname);
+  // verificarAcceso(window.location.pathname);
 
   while (divRoot.firstChild) {
     divRoot.removeChild(divRoot.firstChild);

@@ -4,29 +4,38 @@ import { auth, signInWithEmailAndPassword, signInWithPopup, provider } from '../
 // eslint-disable-next-line import/no-unresolved
 import { Home } from './Home.js';
 
-const loginEmailPassword = async () => {
+//Crear una función para que valide los campos del input que no deben estar vacíos TAREA
+
+/* const loginEmailPassword = async () => {
   const email = document.getElementById('inputEmail').value;
   const password = document.getElementById('inputPassword').value;
   try {
     console.log('soy try');
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     if (userCredential.user) {
-      console.log('Aquí dice Arkelly', Home());
+      // console.log('Aquí dice Arkelly', Home());
       return Home(); // cómo mostrar el Home con su ruta
     }
     console.log('Soy un user', userCredential.user);
   } catch (error) {
     console.log(error);
   }
-};
+}; */
 const signInGoogle = () => {
   /* const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInwithPopup(provider); */
   signInWithPopup(auth, provider)
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      const user = result.user;
+ 
+      
+        // console.log('Aquí dice Arkelly', Home());
+        onNavigate('/home');
+        Home();
+        // cómo mostrar el Home con su ruta
+      
+      //const token = credential.accessToken;
+      //const user = result.user;
 
     // console.log(user);
     }).catch((error) => {
@@ -65,6 +74,7 @@ export const Login = () => {
   const inputEmail = document.createElement('input');
   inputEmail.setAttribute('id', 'inputEmail'); // Id inputEmail
   inputEmail.className = 'inputEmail';
+  inputEmail.autocomplete = 'off';
   inputEmail.placeholder = 'ejemplo@gmail.com';
   const divTextPassword = document.createElement('div');
   divTextPassword.className = 'divTextPassword';
@@ -73,6 +83,7 @@ export const Login = () => {
   inputPassword.setAttribute('id', 'inputPassword'); // Id password
   inputPassword.className = 'inputPassword';
   inputPassword.placeholder = 'Contraseña';
+  inputPassword.autocomplete = 'off';
   divInputs.appendChild(divTextEmail);
   divInputs.appendChild(inputEmail);
   divInputs.appendChild(divTextPassword);
@@ -80,7 +91,7 @@ export const Login = () => {
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'buttonLogin';
   buttonLogin.addEventListener('click', () => loginEmailPassword());
-  buttonLogin.addEventListener('click', () => onNavigate('/home'));
+  //buttonLogin.addEventListener('click', );
   buttonLogin.setAttribute('type', 'button');
   const buttonLoginText = document.createTextNode('Iniciar Sesión');
   buttonLogin.appendChild(buttonLoginText);
@@ -90,8 +101,8 @@ export const Login = () => {
   const text = document.createElement('div');
   text.textContent = '-O-';
   const buttonGoogle = document.createElement('button');
-  buttonGoogle.addEventListener('click', () => signInGoogle());
-  buttonGoogle.addEventListener('click', () => onNavigate('/home'));
+  buttonGoogle.addEventListener('click', signInGoogle);
+  //buttonGoogle.addEventListener('click', () => onNavigate('/home'));
   buttonGoogle.className = 'buttonGoogle';
   buttonGoogle.setAttribute('type', 'button');
   const buttonGoogleText = document.createTextNode('Iniciar con Google');

@@ -1,4 +1,11 @@
 // lógica
+import { dataBase, doc, setDoc } from '../firebase/methods.js';
+
+const set = setDoc(doc(dataBase, "Yurema", "Primer Post"), {
+  name: "Los Angeles",
+  state: "CA",
+  country: "USA"
+});
 
 export const Home = () => {
   const divHome = document.createElement('div');
@@ -32,7 +39,7 @@ export const Home = () => {
   const divUserName = document.createElement('div');
   divUserName.className = 'userName';
   divUserName.textContent = 'NOMBRE DE LA PERSONA LOGEADA';
-  const spamUser = document.createElement ('spam');
+  const spamUser = document.createElement('spam');
   spamUser.className = 'spamuser';
   const divPost = document.createElement('div');
   divPost.className = 'divPostHome';
@@ -42,6 +49,7 @@ export const Home = () => {
   const divbuttonPublish = document.createElement('div');
   divbuttonPublish.className = 'divButtonPublish';
   const buttonPublish = document.createElement('button');
+  buttonPublish.addEventListener('click', set);
   buttonPublish.textContent = 'Publicar';
   buttonPublish.className = 'buttonPublish button';
 
@@ -57,7 +65,7 @@ export const Home = () => {
   formPizarra.className = 'profilePizarra';
   const divPizarraName = document.createElement('div');
   divPizarraName.className = 'pizarraName';
-  const spamUserPizarra = document.createElement ('spam');
+  const spamUserPizarra = document.createElement('spam');
   spamUserPizarra.className = 'spamPizarra';
   const divPostPizarra = document.createElement('div');
   divPostPizarra.className = 'divPostBoard';
@@ -69,7 +77,7 @@ export const Home = () => {
   const buttonLike = document.createElement('button');
   buttonLike.textContent = '';
   buttonLike.className = 'buttonLike buttonBoard';
-  const imgPlane = document.createElement ('img');
+  const imgPlane = document.createElement('img');
   imgPlane.src = '/img/planeLike.png';
   imgPlane.className = 'imgPlane';
   const buttonEdit = document.createElement('button');
