@@ -1,38 +1,40 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
-import { auth, signInWithEmailAndPassword, signInWithPopup, provider } from '../firebase/methods.js';
+import {
+  auth,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  provider,
+  GoogleAuthProvider,
+} from '../firebase/methods.js';
 // eslint-disable-next-line import/no-unresolved
-import { Home } from './Home.js';
 
-//Crear una función para que valide los campos del input que no deben estar vacíos TAREA
+// Crear una función para que valide los campos del input que no deben estar vacíos TAREA
 
-/* const loginEmailPassword = async () => {
+const loginEmailPassword = async () => {
   const email = document.getElementById('inputEmail').value;
   const password = document.getElementById('inputPassword').value;
   try {
     console.log('soy try');
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    if (userCredential.user) {
-      // console.log('Aquí dice Arkelly', Home());
-      return Home(); // cómo mostrar el Home con su ruta
+    if (userCredential.user && email !== '' && password !== '') {
+      // console.log('Aquí me muestro');
+      onNavigate('/home'); // cómo mostrar el Home con su ruta
     }
     console.log('Soy un user', userCredential.user);
   } catch (error) {
     console.log(error);
   }
-}; */
+}; 
 const signInGoogle = () => {
   /* const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInwithPopup(provider); */
   signInWithPopup(auth, provider)
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
- 
-      
-        // console.log('Aquí dice Arkelly', Home());
+        console.log('Aquí dice Arkelly', credential);
         onNavigate('/home');
-        Home();
-        // cómo mostrar el Home con su ruta
+       // cómo mostrar el Home con su ruta
       
       //const token = credential.accessToken;
       //const user = result.user;
@@ -75,6 +77,7 @@ export const Login = () => {
   inputEmail.setAttribute('id', 'inputEmail'); // Id inputEmail
   inputEmail.className = 'inputEmail';
   inputEmail.autocomplete = 'off';
+  inputEmail.required = true;
   inputEmail.placeholder = 'ejemplo@gmail.com';
   const divTextPassword = document.createElement('div');
   divTextPassword.className = 'divTextPassword';
@@ -84,14 +87,15 @@ export const Login = () => {
   inputPassword.className = 'inputPassword';
   inputPassword.placeholder = 'Contraseña';
   inputPassword.autocomplete = 'off';
+  inputPassword.required = true;
+  inputPassword.type = 'password';
   divInputs.appendChild(divTextEmail);
   divInputs.appendChild(inputEmail);
   divInputs.appendChild(divTextPassword);
   divInputs.appendChild(inputPassword);
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'buttonLogin';
-  buttonLogin.addEventListener('click', () => loginEmailPassword());
-  //buttonLogin.addEventListener('click', );
+  buttonLogin.addEventListener('click', loginEmailPassword);
   buttonLogin.setAttribute('type', 'button');
   const buttonLoginText = document.createTextNode('Iniciar Sesión');
   buttonLogin.appendChild(buttonLoginText);
@@ -102,7 +106,6 @@ export const Login = () => {
   text.textContent = '-O-';
   const buttonGoogle = document.createElement('button');
   buttonGoogle.addEventListener('click', signInGoogle);
-  //buttonGoogle.addEventListener('click', () => onNavigate('/home'));
   buttonGoogle.className = 'buttonGoogle';
   buttonGoogle.setAttribute('type', 'button');
   const buttonGoogleText = document.createTextNode('Iniciar con Google');

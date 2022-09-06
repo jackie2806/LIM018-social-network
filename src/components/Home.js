@@ -1,11 +1,11 @@
 // lógica
-import { dataBase, doc, setDoc } from '../firebase/methods.js';
-
-const set = setDoc(doc(dataBase, "Yurema", "Primer Post"), {
-  name: "Los Angeles",
-  state: "CA",
-  country: "USA"
-});
+import {
+  dataBase,
+  doc,
+  setDoc,
+  addDoc,
+  collection,
+} from '../firebase/methods.js';
 
 export const Home = () => {
   const divHome = document.createElement('div');
@@ -36,20 +36,20 @@ export const Home = () => {
   // ProfilePost
   const formBoxProfile = document.createElement('form');
   formBoxProfile.className = 'profilePost';
+  const userName = document.getElementById('name');
   const divUserName = document.createElement('div');
   divUserName.className = 'userName';
-  divUserName.textContent = 'NOMBRE DE LA PERSONA LOGEADA';
+  divUserName.textContent = userName;
   const spamUser = document.createElement('spam');
   spamUser.className = 'spamuser';
   const divPost = document.createElement('div');
   divPost.className = 'divPostHome';
-  const inputPost = document.createElement('input');
+  const inputPost = document.createElement('input'); // input
   inputPost.className = 'postHome';
   inputPost.placeholder = '¿Qué estás pensando?';
   const divbuttonPublish = document.createElement('div');
   divbuttonPublish.className = 'divButtonPublish';
   const buttonPublish = document.createElement('button');
-  buttonPublish.addEventListener('click', set);
   buttonPublish.textContent = 'Publicar';
   buttonPublish.className = 'buttonPublish button';
 
@@ -97,12 +97,21 @@ export const Home = () => {
   divButtons.appendChild(buttonEdit);
   divButtons.appendChild(buttonDelete);
   divContainer.appendChild(formPizarra);
-  
-  // const divBoxPost = document.createElement('div');
-  // const divBoxPublish = document.createElement('div');
-  // divContainer.appendChild(divBoxMain);
-  // divBoxMain.appendChild(divBoxPost);
-  // divBoxMain.appendChild(divBoxPublish);
-  // console.log('estoy en el Home');
+  // Lógica
+  const btnPublic = divHome.querySelector('.buttonPublish');
+  const inputValue = divHome.querySelector('.postHome');
+  btnPublic.addEventListener('click', (e) => {
+    e.preventDefault(); console.log('input', inputValue.value);
+   
+    const docRef = addDoc(collection(dataBase, "post"), {
+      post: inputValue.value,
+    });
+  });
   return divHome;
 };
+
+/* addDoc(doc(dataBase, "c"), {
+      name: "Los Angeles",
+      state: inputValue.value,
+      country: "USA"
+    }) */

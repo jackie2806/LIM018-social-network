@@ -2,17 +2,17 @@
 import { onNavigate } from '../main.js';
 import { auth, createUserWithEmailAndPassword } from '../firebase/methods.js';
 
-/* const registerUser = async (email, password) => {
+const registerUser = async (email, password) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     console.log(userCredential.user);
-
+    
     return userCredential;
   } catch (error) {
     console.error(error.code);
     console.error(error.message);
   }
-} */
+};
 
 const Register = {
   formRegister: document.createElement('form'),
@@ -42,9 +42,7 @@ const Register = {
     divLogoRegister.appendChild(imgLogo);
     divRegister.appendChild(divLogoRegister)
     this.formRegister.className = 'formulario';
-  
-
-    //name
+    // name
     const divName = document.createElement('div');
     divName.className = 'divName inputRegister';
     const inputName = document.createElement('input');
@@ -163,7 +161,6 @@ const Register = {
     this.verificarSubmit()
 
     return divContainer
-
   },
   crearMostrarContrasena: function (input, activador) {
     activador.addEventListener('click', (evt) => {
@@ -199,8 +196,6 @@ const Register = {
       if (verificarCorreoRegistado(evt) === false) return
 
       // En este punto ya todas las validaciones estan hechas
-
-      
       const email = evt.target.querySelector('#email').value
       const password = evt.target.querySelector('#Password').value
       const user = await registerUser(email, password)
