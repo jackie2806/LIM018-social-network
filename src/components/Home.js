@@ -39,7 +39,7 @@ export const Home = () => {
   const userName = document.getElementById('name');
   const divUserName = document.createElement('div');
   divUserName.className = 'userName';
-  divUserName.textContent = userName;
+  divUserName.textContent = 'Nombre del usuario';
   const spamUser = document.createElement('spam');
   spamUser.className = 'spamuser';
   const divPost = document.createElement('div');
@@ -71,7 +71,7 @@ export const Home = () => {
   divPostPizarra.className = 'divPostBoard';
   const inputPizarra = document.createElement('input');
   inputPizarra.className = 'postBoard';
-  inputPizarra.placeholder = 'aquI irá su comentario';
+  inputPizarra.placeholder = 'aquí irá su comentario';
   const divButtons = document.createElement('div');
   divButtons.className = 'buttons';
   const buttonLike = document.createElement('button');

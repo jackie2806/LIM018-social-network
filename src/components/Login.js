@@ -6,6 +6,7 @@ import {
   signInWithPopup,
   provider,
   GoogleAuthProvider,
+  saveUserInLocalStorage,
 } from '../firebase/methods.js';
 // eslint-disable-next-line import/no-unresolved
 
@@ -19,19 +20,24 @@ const loginEmailPassword = async () => {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     if (userCredential.user && email !== '' && password !== '') {
       // console.log('Aquí me muestro');
+      saveUserInLocalStorage(userCredential.user);
       onNavigate('/home'); // cómo mostrar el Home con su ruta
+      
     }
     console.log('Soy un user', userCredential.user);
+    console.log('estoy legeado', auth.currentUser);
   } catch (error) {
     console.log(error);
   }
-}; 
+};
+
 const signInGoogle = () => {
   /* const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInwithPopup(provider); */
   signInWithPopup(auth, provider)
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
+        saveUserInLocalStorage(credential);
         console.log('Aquí dice Arkelly', credential);
         onNavigate('/home');
        // cómo mostrar el Home con su ruta
