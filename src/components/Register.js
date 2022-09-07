@@ -48,6 +48,7 @@ const Register = {
     const inputName = document.createElement('input');
     inputName.className = 'inputForm';
     inputName.placeholder = 'Nombre y apellidos';
+    inputName.autofocus = 'on';
     inputName.autocomplete = 'off'
     inputName.id = 'name';
     inputName.required = true;

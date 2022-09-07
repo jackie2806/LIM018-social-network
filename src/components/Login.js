@@ -22,7 +22,6 @@ const loginEmailPassword = async () => {
       // console.log('Aquí me muestro');
       saveUserInLocalStorage(userCredential.user);
       onNavigate('/home'); // cómo mostrar el Home con su ruta
-      
     }
     console.log('Soy un user', userCredential.user);
     console.log('estoy legeado', auth.currentUser);
@@ -38,7 +37,7 @@ const signInGoogle = () => {
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
         saveUserInLocalStorage(credential);
-        console.log('Aquí dice Arkelly', credential);
+        console.log('Usuario', credential);
         onNavigate('/home');
        // cómo mostrar el Home con su ruta
       
@@ -85,6 +84,7 @@ export const Login = () => {
   inputEmail.autocomplete = 'off';
   inputEmail.required = true;
   inputEmail.placeholder = 'ejemplo@gmail.com';
+  inputEmail.autofocus = 'on';
   const divTextPassword = document.createElement('div');
   divTextPassword.className = 'divTextPassword';
   divTextPassword.textContent = 'Ingresa tu contraseña';
