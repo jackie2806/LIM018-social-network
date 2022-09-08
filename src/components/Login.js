@@ -36,8 +36,10 @@ const signInGoogle = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
-        saveUserInLocalStorage(credential);
+      
+        saveUserInLocalStorage(result.user);
         console.log('Usuario', credential);
+        console.log(result);
         onNavigate('/home');
        // cómo mostrar el Home con su ruta
       

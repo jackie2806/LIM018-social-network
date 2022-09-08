@@ -5,9 +5,11 @@ import {
   setDoc,
   addDoc,
   collection,
+  getUser,
 } from '../firebase/methods.js';
 
 export const Home = () => {
+  const user = getUser();
   const divHome = document.createElement('div');
   // Logo
   const divMenu = document.createElement('div');
@@ -36,10 +38,10 @@ export const Home = () => {
   // ProfilePost
   const formBoxProfile = document.createElement('form');
   formBoxProfile.className = 'profilePost';
-  const userName = document.getElementById('name');
+  // const userName = document.getElementById('name');
   const divUserName = document.createElement('div');
   divUserName.className = 'userName';
-  divUserName.textContent = 'Nombre del usuario';
+  divUserName.textContent = user ? user.displayName : 'Nombre del usuario'; //  nombre del usuario
   const spamUser = document.createElement('spam');
   spamUser.className = 'spamuser';
   const divPost = document.createElement('div');

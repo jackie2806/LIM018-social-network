@@ -25,7 +25,7 @@ const verificarAcceso = (pathname) => {
   switch (pathname) {
     case '/home':
       // esta en /home y no esta logeado
-      if (estoyLogeado === null) {
+      if (!estoyLogeado) {
          window.location.href = '/';
       }
       break;
