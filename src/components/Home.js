@@ -78,13 +78,15 @@ export const Home = () => {
   btnPublic.addEventListener('click', (e) => {
     e.preventDefault();
     console.log('input', inputValue.value);
-    const docRef = addDoc(collection(dataBase, "post"), {
+    const docRef = addDoc(collection(dataBase, 'post'), {
       post: inputValue.value,
     });
   });
-  const post = Post();
-  divContainerPost.appendChild(post);
-  divHome.appendChild(divContainerPost);
-
+  btnPublic.addEventListener('click', (e) => {
+    e.preventDefault();
+    const post = Post();
+    divContainerPost.appendChild(post);
+    divHome.appendChild(divContainerPost);
+  });
   return divHome;
 };
