@@ -6,6 +6,11 @@ import {
   addDoc,
   collection,
   getUser,
+  getDocs,
+  onSnapshot,
+  deleteDoc,
+  getDoc,
+  updateDoc,
 } from '../firebase/methods.js';
 
 export const Home = () => {
