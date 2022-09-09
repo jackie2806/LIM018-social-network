@@ -14,7 +14,7 @@ import {
   collection,
   getDocs,
   onSnapshot,
-  deleteDocs,
+  deleteDoc,
   getDoc,
   updateDoc,
 } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-firestore.js';
@@ -43,14 +43,16 @@ export const isLoggedIn = () => {
 };
 
 const getUser = () => {
-  if (auth.currentUser){
+  if (auth.currentUser) {
+    console.log('Firebase', auth.currentUser);
     return auth.currentUser;
   }
-  if(getUserFromLocalStorage()){
+  if (getUserFromLocalStorage()) {
+    console.log('LocalStorage', auth.currentUser);
     return getUserFromLocalStorage();
   }
   return null;
-}
+};
 export {
   doc,
   setDoc,
@@ -65,7 +67,7 @@ export {
   getUser,
   getDocs,
   onSnapshot,
-  deleteDocs,
+  deleteDoc,
   getDoc,
   updateDoc,
 };

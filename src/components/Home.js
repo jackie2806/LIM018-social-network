@@ -75,18 +75,23 @@ export const Home = () => {
   // Lógica
   const btnPublic = divHome.querySelector('.buttonPublish');
   const inputValue = divHome.querySelector('.postHome');
+
+  const publicPost = () => {
+    if (inputValue.value !== '') {
+      console.log('input', inputValue.value);
+      const docRef = addDoc(collection(dataBase, 'post'), {
+        post: inputValue.value,
+      });
+      const post = Post();
+      divContainerPost.appendChild(post);
+      divHome.appendChild(divContainerPost);
+    } else {
+      alert('Ingresa un mensaje');
+    }
+  };
   btnPublic.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log('input', inputValue.value);
-    const docRef = addDoc(collection(dataBase, 'post'), {
-      post: inputValue.value,
-    });
-  });
-  btnPublic.addEventListener('click', (e) => {
-    e.preventDefault();
-    const post = Post();
-    divContainerPost.appendChild(post);
-    divHome.appendChild(divContainerPost);
+    publicPost();
   });
   return divHome;
 };
