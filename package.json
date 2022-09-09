@@ -13,7 +13,7 @@
     "htmlhint": "htmlhint dist/*.html ",
     "eslint": "eslint --ext .js src/ test/",
     "stylelint": "stylelint --aei src/**/*.css",
-    "pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
+    "pretest2": "npm run htmlhint && npm run eslint && npm run stylelint",
     "test": "jest --coverage",
     "start": "serve -s src/ -s"
   },
@@ -27,6 +27,7 @@
     "eslint-plugin-jest": "^25.3.0",
     "htmlhint": "^1.0.0",
     "jest": "^27.0.1",
+    "jest-environment-jsdom": "^29.0.2",
     "regenerator-runtime": "^0.13.1",
     "serve": "^13.0.2",
     "stylelint": "^14.1.0",
@@ -37,5 +38,13 @@
   },
   "dependencies": {
     "firebase": "^9.9.2"
+  },
+  "jest":{
+  "testEnvironment":"--env=jsdom",
+  "testEnvironmentOptions": {
+    "html": "<!DOCTYPE html><div id='app'></div></html>"
   }
+}
+  
+
 }

@@ -51,3 +51,7 @@ export const Post = () => {
   divContainerPost.appendChild(formPizarra);
   return divContainerPost;
 };
+// "jest":{
+//   "testEnvironment":"jsdom",
+//   "testEnvironmentOptions":{"browser":["chrome"]}
+// }

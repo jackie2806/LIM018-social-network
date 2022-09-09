@@ -71,7 +71,6 @@ export const Home = () => {
   divbuttonPublish.appendChild(buttonPublish);
   divContainer.appendChild(formBoxProfile);
   // Pizarra dinámica
-  
   // Lógica
   const btnPublic = divHome.querySelector('.buttonPublish');
   const inputValue = divHome.querySelector('.postHome');
