@@ -84,6 +84,7 @@ export const Home = () => {
       const post = Post();
       divContainerPost.appendChild(post);
       divHome.appendChild(divContainerPost);
+      document.querySelector('.postHome').value = '';
     } else {
       alert('Ingresa un mensaje');
     }
