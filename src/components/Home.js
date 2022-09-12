@@ -2,6 +2,7 @@
 import {
   getUser,
   createPost,
+  getPosts,
 } from '../firebase/methods.js';
 import { Post } from './Post.js';
 
@@ -72,8 +73,18 @@ export const Home = () => {
 
   btnPublic.addEventListener('click', (e) => {
     e.preventDefault();
-    publicPost(inputValue.value, divContainerPost, divHome, Post(), createPost);
+    publicPost(inputValue.value, createPost);
     document.querySelector('.postHome').value = '';
+  });
+  window.addEventListener('DOMContentLoaded', async () => {
+    const querySnapshot = await getPosts();
+    console.log(querySnapshot);
+    querySnapshot.forEach((doc) => {
+      const postData = doc.data();
+      console.log(postData);
+      divContainerPost.appendChild(Post(postData.post));
+      divHome.appendChild(divContainerPost);
+    });
   });
   return divHome;
 };

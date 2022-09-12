@@ -1,7 +1,7 @@
 import {
-
 } from '../firebase/methods.js';
-export const Post = () => {
+
+export const Post = (coment) => {
   const divContainerPost = document.createElement('div');
   divContainerPost.className = 'container';
   const formPizarra = document.createElement('form');
@@ -14,7 +14,7 @@ export const Post = () => {
   divPostPizarra.className = 'divPostBoard';
   const inputPizarra = document.createElement('input');
   inputPizarra.className = 'postBoard';
-  inputPizarra.placeholder = 'aquí irá su comentario';
+  inputPizarra.placeholder = `${coment}`;
   const divButtons = document.createElement('div');
   divButtons.className = 'buttons';
   const buttonLike = document.createElement('button');

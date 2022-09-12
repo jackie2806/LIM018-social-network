@@ -1,15 +1,13 @@
 // aqui exportaras las funciones que necesites
-
-export const publicPost = (input, divContainerPost, divHome, post, createPost) => {
+// Función que crea la publicación en Home
+export const publicPost = (input, createPost) => {
   if (input !== '') {
-    console.log('input', input);
-    divContainerPost.appendChild(post);
-    divHome.appendChild(divContainerPost);
     createPost(input);
   } else {
     alert('Ingresa un mensaje');
   }
 };
+
 
 
 

@@ -8,9 +8,6 @@ import {
   GoogleAuthProvider,
   saveUserInLocalStorage,
 } from '../firebase/methods.js';
-// eslint-disable-next-line import/no-unresolved
-
-// Crear una función para que valide los campos del input que no deben estar vacíos TAREA
 
 const loginEmailPassword = async () => {
   const email = document.getElementById('inputEmail').value;
@@ -31,21 +28,15 @@ const loginEmailPassword = async () => {
 };
 
 const signInGoogle = () => {
-  /* const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInwithPopup(provider); */
   signInWithPopup(auth, provider)
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
-      
-        saveUserInLocalStorage(result.user);
-        console.log('Usuario', credential);
-        console.log(result);
-        onNavigate('/home');
-       // cómo mostrar el Home con su ruta
-      
+      saveUserInLocalStorage(result.user);
+      console.log('Usuario', credential);
+      console.log(result);
+      onNavigate('/home');
       //const token = credential.accessToken;
       //const user = result.user;
-
     // console.log(user);
     }).catch((error) => {
       const errorCode = error.code;
