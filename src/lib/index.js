@@ -1,15 +1,19 @@
 // aqui exportaras las funciones que necesites
 
-export const publicPost = (input, divContainerPost, divHome, post) => {
-  if (input.value !== '') {
-    console.log('input', input.value);
+export const publicPost = (input, divContainerPost, divHome, post, createPost) => {
+  if (input !== '') {
+    console.log('input', input);
     divContainerPost.appendChild(post);
     divHome.appendChild(divContainerPost);
-    document.querySelector('.postHome').value = '';
+    createPost(input);
   } else {
     alert('Ingresa un mensaje');
   }
 };
+
+
+
+
 
 // eslint-disable-next-line import/newline-after-import
 // import { auth, onAuthStateChanged } from '../firebase/config.js';

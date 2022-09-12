@@ -77,8 +77,8 @@ export const Home = () => {
 
   btnPublic.addEventListener('click', (e) => {
     e.preventDefault();
-    publicPost(inputValue, divContainerPost, divHome, Post());
-    createPost(user, inputValue.value);
+    publicPost(inputValue.value, divContainerPost, divHome, Post(), createPost);
+    document.querySelector('.postHome').value = '';
   });
   return divHome;
 };
