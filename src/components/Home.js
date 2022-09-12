@@ -3,6 +3,7 @@ import {
   getUser,
   createPost,
   getPosts,
+  onGetPosts,
 } from '../firebase/methods.js';
 import { Post } from './Post.js';
 
@@ -57,7 +58,7 @@ export const Home = () => {
   buttonPublish.textContent = 'Publicar';
   buttonPublish.className = 'buttonPublish button';
   // contenedor de los post
-  const divContainerPost = document.createElement('div');
+  
 
   formBoxProfile.appendChild(divUserName);
   formBoxProfile.appendChild(divPost);
@@ -70,21 +71,25 @@ export const Home = () => {
   // Lógica
   const btnPublic = divHome.querySelector('.buttonPublish');
   const inputValue = divHome.querySelector('.postHome');
+  const divContainerPost = document.createElement('div');
+  window.addEventListener('DOMContentLoaded', async () => {
+    onGetPosts((querySnapshot) => {
+      divContainerPost.innerHTML = '';
+      console.log(querySnapshot);
+      querySnapshot.forEach((doc) => {
+        const postData = doc.data();
+        console.log(postData);
+        divContainerPost.appendChild(Post(postData.post));
+        divHome.appendChild(divContainerPost);
+      });
+    });
+  });
 
   btnPublic.addEventListener('click', (e) => {
     e.preventDefault();
     publicPost(inputValue.value, createPost);
     document.querySelector('.postHome').value = '';
   });
-  window.addEventListener('DOMContentLoaded', async () => {
-    const querySnapshot = await getPosts();
-    console.log(querySnapshot);
-    querySnapshot.forEach((doc) => {
-      const postData = doc.data();
-      console.log(postData);
-      divContainerPost.appendChild(Post(postData.post));
-      divHome.appendChild(divContainerPost);
-    });
-  });
+
   return divHome;
 };

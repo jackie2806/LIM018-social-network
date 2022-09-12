@@ -41,4 +41,3 @@ export const Post = (coment) => {
   divContainerPost.appendChild(formPizarra);
   return divContainerPost;
 };
-
