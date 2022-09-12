@@ -1,10 +1,5 @@
 // lógica
 import {
-  /* dataBase,
-  doc,
-  setDoc,
-  addDoc,
-  collection, */
   getUser,
   createPost,
 } from '../firebase/methods.js';
