@@ -2,7 +2,7 @@
 import {
   getUser,
   createPost,
-  getPosts,
+  // getPosts,
   onGetPosts,
 } from '../firebase/methods.js';
 import { Post } from './Post.js';
@@ -58,8 +58,6 @@ export const Home = () => {
   buttonPublish.textContent = 'Publicar';
   buttonPublish.className = 'buttonPublish button';
   // contenedor de los post
-  
-
   formBoxProfile.appendChild(divUserName);
   formBoxProfile.appendChild(divPost);
   formBoxProfile.appendChild(divbuttonPublish);
@@ -72,14 +70,17 @@ export const Home = () => {
   const btnPublic = divHome.querySelector('.buttonPublish');
   const inputValue = divHome.querySelector('.postHome');
   const divContainerPost = document.createElement('div');
+
   window.addEventListener('DOMContentLoaded', async () => {
     onGetPosts((querySnapshot) => {
       divContainerPost.innerHTML = '';
       console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
         const postData = doc.data();
+        const postIdentity = doc.id; // user.uid
+        console.log(postIdentity); // .document(uid)
         console.log(postData);
-        divContainerPost.appendChild(Post(postData.post));
+        divContainerPost.appendChild(Post(postData.post, postIdentity));
         divHome.appendChild(divContainerPost);
       });
     });

@@ -1,11 +1,13 @@
 import {
   getUser,
+  deletePost,
 } from '../firebase/methods.js';
 
-export const Post = (coment) => {
+export const Post = (coment, indentity) => {
   const user = getUser();
   const divContainerPost = document.createElement('div');
   divContainerPost.className = 'container';
+  /* divContainerPost.setAttribute('data-id', indentity); */
   const formPizarra = document.createElement('form');
   formPizarra.className = 'profilePizarra';
   const divPizarraName = document.createElement('div');
@@ -30,8 +32,15 @@ export const Post = (coment) => {
   buttonEdit.textContent = 'editar';
   buttonEdit.className = 'buttonEdit buttonBoard';
   const buttonDelete = document.createElement('button');
-  buttonDelete.textContent = 'delete';
+  buttonDelete.textContent = 'delete'; // llamar Button, caputrar el  id y firebase
   buttonDelete.className = 'buttonDelete buttonBoard';
+  buttonDelete.setAttribute('data-id', indentity);
+  // evento para eliminar
+/*   buttonDelete.addEventListener('click', (e) => {
+    e.preventDefault();
+    publicPost(inputValue.value, createPost);
+    document.querySelector('.postHome').value = '';
+  }); */
   formPizarra.appendChild(divPizarraName);
   formPizarra.appendChild(divPostPizarra);
   formPizarra.appendChild(divButtons);
