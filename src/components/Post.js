@@ -1,7 +1,9 @@
 import {
+  getUser,
 } from '../firebase/methods.js';
 
 export const Post = (coment) => {
+  const user = getUser();
   const divContainerPost = document.createElement('div');
   divContainerPost.className = 'container';
   const formPizarra = document.createElement('form');
@@ -10,6 +12,7 @@ export const Post = (coment) => {
   divPizarraName.className = 'pizarraName';
   const spamUserPizarra = document.createElement('spam');
   spamUserPizarra.className = 'spamPizarra';
+  spamUserPizarra.textContent = user ? user.displayName : 'Nombre del usuario';
   const divPostPizarra = document.createElement('div');
   divPostPizarra.className = 'divPostBoard';
   const inputPizarra = document.createElement('input');
