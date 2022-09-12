@@ -1,15 +1,5 @@
 import {
-  dataBase,
-  doc,
-  setDoc,
-  addDoc,
-  collection,
-  getUser,
-  getDocs,
-  onSnapshot,
-  deleteDoc,
-  getDoc,
-  updateDoc,
+
 } from '../firebase/methods.js';
 export const Post = () => {
   const divContainerPost = document.createElement('div');
@@ -51,7 +41,4 @@ export const Post = () => {
   divContainerPost.appendChild(formPizarra);
   return divContainerPost;
 };
-// "jest":{
-//   "testEnvironment":"jsdom",
-//   "testEnvironmentOptions":{"browser":["chrome"]}
-// }
+

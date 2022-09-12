@@ -1,18 +1,18 @@
 // lógica
 import {
-  dataBase,
+  /* dataBase,
   doc,
   setDoc,
   addDoc,
-  collection,
+  collection, */
   getUser,
-  getDocs,
-  onSnapshot,
-  deleteDoc,
-  getDoc,
-  updateDoc,
+  createPost,
 } from '../firebase/methods.js';
 import { Post } from './Post.js';
+
+import {
+  publicPost,
+} from '../lib/index.js';
 
 export const Home = () => {
   const user = getUser();
@@ -75,23 +75,10 @@ export const Home = () => {
   const btnPublic = divHome.querySelector('.buttonPublish');
   const inputValue = divHome.querySelector('.postHome');
 
-  const publicPost = () => {
-    if (inputValue.value !== '') {
-      console.log('input', inputValue.value);
-      const docRef = addDoc(collection(dataBase, 'post'), {
-        post: inputValue.value,
-      });
-      const post = Post();
-      divContainerPost.appendChild(post);
-      divHome.appendChild(divContainerPost);
-      document.querySelector('.postHome').value = '';
-    } else {
-      alert('Ingresa un mensaje');
-    }
-  };
   btnPublic.addEventListener('click', (e) => {
     e.preventDefault();
-    publicPost();
+    publicPost(inputValue, divContainerPost, divHome, Post());
+    createPost(user, inputValue.value);
   });
   return divHome;
 };
