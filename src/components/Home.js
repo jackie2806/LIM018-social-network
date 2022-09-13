@@ -55,7 +55,7 @@ export const Home = () => {
   inputPost.placeholder = '¿Qué estás pensando?';
   const divbuttonPublish = document.createElement('div');
   divbuttonPublish.className = 'divButtonPublish';
-  const buttonPublish = document.createElement('button')
+  const buttonPublish = document.createElement('button');
   buttonPublish.textContent = 'Publicar';
   buttonPublish.className = 'buttonPublish button';
   // contenedor de los post

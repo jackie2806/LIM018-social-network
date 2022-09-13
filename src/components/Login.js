@@ -55,7 +55,7 @@ export const Login = () => {
   const arrowImgLogin = document.createElement('img');
   arrowImgLogin.className = 'arrowImgLogin';
   arrowImgLogin.addEventListener('click', () => onNavigate('/'));
-  arrowImgLogin.src = '../img/arrow.png';
+  arrowImgLogin.src = '../img/arrowregister.png';
   arrowImgLogin.alt = 'ArrowLeft';
   divArrowLogin.appendChild(arrowImgLogin);
   const divLoginImg = document.createElement('div');
