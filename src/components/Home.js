@@ -110,8 +110,10 @@ export const Home = () => {
             if (btnsEdit.length >= 1 && inputsPostPrinter.length >= 1) {
               if (btnsEdit[0].id === inputsPostPrinter[0].id) {
                 console.log('match...', btnsEdit[0]);
+                console.log('un botón', btnsEdit[0].id);
                 inputsPostPrinter[0].value = postPrinter;
                 updatePost(doc.id, { post: inputsPostPrinter[0].value });
+                console.log(updatePost(doc.id, { post: inputsPostPrinter[0].value }));
                 btnEdit.textContent = 'Actualizar';
               }
             }
