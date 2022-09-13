@@ -93,6 +93,36 @@ export const Home = () => {
           deletePost(idPost);
         });
       });
+      const btnsEdit = divContainerPost.querySelectorAll('.buttonEdit');
+      const inputsPostBoard = divContainerPost.querySelectorAll('.postBoard');
+      const btnEdit = divContainerPost.querySelector('.buttonEdit');
+
+      const valueInputBoard = divContainerPost.querySelector('.postBoard');
+      // const inputPostBoard = divContainer.querySelector('.postBoard');
+      
+      console.log('NodeList de inputs', inputsPostBoard);
+      btnsEdit.forEach((btn) => {
+        btn.addEventListener('click', async (e) => {
+          e.preventDefault();
+          const doc = await getPost(e.target.dataset.id);
+          const postPrinter = doc.data();
+          console.log('estoy en el primer loop , y muestro los datos de FIREBASE...');
+          console.log(postPrinter);
+          inputsPostBoard.forEach((posting) => {
+            console.log('soy posting id', posting.id);
+            let match;
+            if (btnsEdit.length === 1 && inputsPostBoard.length === 1) {
+              match = btnsEdit[0].getAttribute('data-id') === inputsPostBoard[0].getAttribute('data-id');
+              if (match) {
+                console.log(valueInputBoard.value);
+                valueInputBoard.value = postPrinter;
+                updatePost(doc.id, { post: valueInputBoard.value });
+                btnEdit.textContent = 'Actualizar';
+              }
+            }
+          });
+        });
+      });
     });
   });
 
