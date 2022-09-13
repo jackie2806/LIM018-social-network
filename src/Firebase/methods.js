@@ -32,7 +32,8 @@ export const dataBase = getFirestore(app);
 export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
 
-// REGISTER
+// REGISTER // no pega esto desde git pull
+
 export const registrar = async () => {
   const data = dataRegister()
 
