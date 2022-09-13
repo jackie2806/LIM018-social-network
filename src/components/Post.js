@@ -1,13 +1,11 @@
 import {
   getUser,
-  deletePost,
 } from '../firebase/methods.js';
 
 export const Post = (coment, indentity) => {
   const user = getUser();
   const divContainerPost = document.createElement('div');
   divContainerPost.className = 'container';
-  /* divContainerPost.setAttribute('data-id', indentity); */
   const formPizarra = document.createElement('form');
   formPizarra.className = 'profilePizarra';
   const divPizarraName = document.createElement('div');
@@ -20,6 +18,7 @@ export const Post = (coment, indentity) => {
   const inputPizarra = document.createElement('input');
   inputPizarra.className = 'postBoard';
   inputPizarra.placeholder = `${coment}`;
+  inputPizarra.setAttribute('data-id', indentity);
   const divButtons = document.createElement('div');
   divButtons.className = 'buttons';
   const buttonLike = document.createElement('button');
@@ -30,6 +29,7 @@ export const Post = (coment, indentity) => {
   imgPlane.className = 'imgPlane';
   const buttonEdit = document.createElement('button');
   buttonEdit.textContent = 'editar';
+  buttonEdit.setAttribute('data-id', indentity);
   buttonEdit.className = 'buttonEdit buttonBoard';
   const buttonDelete = document.createElement('button');
   buttonDelete.textContent = 'delete'; // llamar Button, caputrar el  id y firebase

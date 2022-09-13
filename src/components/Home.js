@@ -5,6 +5,7 @@ import {
   // getPosts,
   onGetPosts,
   deletePost,
+  getPost,
 } from '../firebase/methods.js';
 import { Post } from './Post.js';
 
@@ -91,6 +92,17 @@ export const Home = () => {
           const idPost = e.target.dataset.id;
           console.log('delete', idPost);
           deletePost(idPost);
+        });
+      });
+      const btnsEdit = divContainerPost.querySelectorAll('.buttonEdit');
+      
+      btnsEdit.forEach((btn) => {
+        btn.addEventListener('click', async (e) => {
+          e.preventDefault();
+          const doc = await getPost(e.target.dataset.id);
+          const postPrinter = doc.data().post;
+          console.log(postPrinter);
+          divContainerPost.querySelector('.postBoard').value = postPrinter;
         });
       });
     });
