@@ -1,27 +1,11 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
-import { auth, createUserWithEmailAndPassword } from '../firebase/methods.js';
+import { registrar } from '../Firebase/methods.js';
 
-const registerUser = async (email, password) => {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    console.log(userCredential.user);
-
-    return userCredential;
-  } catch (error) {
-    console.error(error.code);
-    console.error(error.message);
-  }
-}
-
-const Register = {
-  formRegister: document.createElement('form'),
-
-  createHTML: function() {
-    this.formRegister.innerHTML = '';
+export const Register = () => {
     const divContainer = document.createElement('div');
     const divRegister = document.createElement('div');
-    divRegister.className = 'divRegister'
+    divRegister.className = 'divRegister';
     const divArrowBack = document.createElement('div');
     divArrowBack.className = 'divArrowBack';
     const arrowImgRegister = document.createElement('img');
@@ -31,6 +15,7 @@ const Register = {
     arrowImgRegister.alt = 'ArrowLeft';
     divArrowBack.appendChild(arrowImgRegister);
     divRegister.appendChild(divArrowBack);
+    divContainer.appendChild(divRegister);
 
     //logo
     const divLogoRegister = document.createElement('div');
@@ -40,16 +25,16 @@ const Register = {
     imgLogo.src = '/img/logoMobile.png';
     imgLogo.alt = 'logo';
     divLogoRegister.appendChild(imgLogo);
-    divRegister.appendChild(divLogoRegister)
-    this.formRegister.className = 'formulario';
-  
+    divRegister.appendChild(divLogoRegister);
 
     //name
+    const formRegister = document.createElement ('form')
     const divName = document.createElement('div');
     divName.className = 'divName inputRegister';
     const inputName = document.createElement('input');
     inputName.className = 'inputForm';
     inputName.placeholder = 'Nombre y apellidos';
+    inputName.autofocus = 'on';
     inputName.autocomplete = 'off'
     inputName.id = 'name';
     inputName.required = true;
@@ -65,7 +50,7 @@ const Register = {
     divImg.appendChild(imgName);
     divName.appendChild(inputName);
     inputName.appendChild(spanName);
-    this.formRegister.appendChild(divName);
+    formRegister.appendChild (divName);
 
     //email
     const divEmail = document.createElement('div');
@@ -86,7 +71,8 @@ const Register = {
     divEmail.appendChild(divImgEmail);
     divImgEmail.appendChild(imgEmail);
     divEmail.appendChild(inputEmail);
-    this.formRegister.appendChild(divEmail);
+    formRegister.appendChild (divEmail);
+
      // contrasena
     const divContrasena = document.createElement('div');
     divContrasena.className = 'divContrasena inputRegister';
@@ -96,7 +82,7 @@ const Register = {
     inputContrasena.autocomplete = 'off';
     inputContrasena.minLength = '6';
     inputContrasena.type = 'password'
-    inputContrasena.id = 'Password';
+    inputContrasena.id = 'password';
     inputContrasena.required = true;
     const divImgContrasena = document.createElement('div');
     divImgContrasena.className = 'divImgContrasena';
@@ -107,9 +93,8 @@ const Register = {
     divContrasena.appendChild(divImgContrasena);
     divImgContrasena.appendChild(imgContrasena);
     divContrasena.appendChild(inputContrasena);
-    this.formRegister.appendChild(divContrasena);
-
-    this.crearMostrarContrasena(inputContrasena, imgContrasena)
+    formRegister.appendChild (divContrasena);
+    mostrarContrasena (inputContrasena, imgContrasena)
 
     // confirmar contrasena
     const divConfirmContrasena = document.createElement('div');
@@ -119,7 +104,7 @@ const Register = {
     inputConfirmContrasena.placeholder = 'Confime la contrasena';
     inputConfirmContrasena.autocomplete = 'off';
     inputConfirmContrasena.minLength = '6';
-    inputConfirmContrasena.id = 'ConfirmPassword';
+    inputConfirmContrasena.id = 'confirmPassword';
     inputConfirmContrasena.type = 'password';
     inputConfirmContrasena.required = true;
     const divImgContrasena2 = document.createElement('div');
@@ -131,19 +116,19 @@ const Register = {
     divConfirmContrasena.appendChild(divImgContrasena2);
     divImgContrasena2.appendChild(imgConfirmContrasena);
     divConfirmContrasena.appendChild(inputConfirmContrasena);
-    this.formRegister.appendChild(divConfirmContrasena);
-
-    this.crearMostrarContrasena(inputConfirmContrasena, imgConfirmContrasena)
+    formRegister.appendChild (divConfirmContrasena);
+    mostrarContrasena (inputConfirmContrasena, imgConfirmContrasena);
 
     // botton registrar
-    const buttonRegister = document.createElement('div')
+    const buttonRegister = document.createElement('div');
     buttonRegister.className = 'buttonRegister inputForm';
     const inputButtonRegister = document.createElement('button')
     inputButtonRegister.type = 'submit';
     inputButtonRegister.id = 'buttonRegister';
     inputButtonRegister.textContent = 'Registrar';
     buttonRegister.appendChild(inputButtonRegister);
-    this.formRegister.appendChild(buttonRegister);
+    formRegister.appendChild (buttonRegister);
+
 
     // texto cuando ya tienen cuenta
     const divRegisterText = document.createElement('div');
@@ -153,71 +138,45 @@ const Register = {
     aLogin.textContent = '¿Ya tienes una cuenta? Haz click aquí';
 
     const loginText = document.createTextNode('¿Ya tienes una cuenta? Haz click aquí');
-    divRegister.appendChild(this.formRegister);
+    divRegister.appendChild(formRegister);
     divRegisterText.appendChild(aLogin);
     divRegisterText.addEventListener('click', () => onNavigate('/login'));
     divRegister.appendChild(divRegisterText);
 
-    divContainer.appendChild(divRegister)
-
-    this.verificarSubmit()
-
+    formRegister.addEventListener('submit', (evt) => {
+        evt.preventDefault()
+        if (contrasenas()) {
+          registrar()
+        } else {
+          alert ('las contraseñas no son iguales corrígelas')
+        }
+    })
     return divContainer
+};
 
-  },
-  crearMostrarContrasena: function (input, activador) {
-    activador.addEventListener('click', (evt) => {
-      input.type = (input.type === 'password' ? 'text' : 'password');
-    });
-  },
-  // logica de validacion post submit (contraseña)
-  verificarSubmit: function () {
-    const verificarContrasenas = (evt) => {
+function contrasenas () {
+  const inputContrasena=document.getElementById('password').value
+  const inputConfirmContrasena=document.getElementById('confirmPassword').value
+  return inputContrasena === inputConfirmContrasena
+}
 
-      const inputPassword = evt.target.querySelector('#Password').value
-      const inputConfirmPassword = evt.target.querySelector('#ConfirmPassword').value
-  // para la lógica de las contraseñas
+function mostrarContrasena (input, ver) {
+  ver.addEventListener('click', (evt) => {
+    input.type = (input.type === 'password' ? 'text' : 'password');
+  });
+  console.log(input)
+  console.log(ver)
+}
 
-      if (inputPassword === inputConfirmPassword) {
-        alert("contrasenas igualitas");
-        return true; // se registra el usuario en Firebase 
-      } else {
-        alert('las contraseñas no coinciden');
-        return false;
-      }
-    }
-
-    const verificarCorreoRegistado = (evt) => {
-      // conexion a firebase y consultar si esta registrado o no
-      return true
-    }
-
-    const validaciones = async (evt) => {
-      evt.preventDefault()
-
-      if (verificarContrasenas(evt) === false) return
-      if (verificarCorreoRegistado(evt) === false) return
-
-      // En este punto ya todas las validaciones estan hechas
-
-      
-      const email = evt.target.querySelector('#email').value
-      const password = evt.target.querySelector('#Password').value
-      const user = await registerUser(email, password)
-      
-
-    }
-
-    // Validar
-    this.formRegister.addEventListener('submit', validaciones);
+export function dataRegister () {
+  const email=document.getElementById('email').value 
+  const password=document.getElementById('password').value
+  const name =document.getElementById('name').value
+  return {
+    email: email,
+    password: password,
+    name: name,
   }
 };
 
-const init = () => {
 
-  const html = Register.createHTML()
-  return html
-
-}
-
-export default init;

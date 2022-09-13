@@ -1,7 +1,20 @@
 // lógica
+import {
+  getUser,
+  createPost,
+  // getPosts,
+  onGetPosts,
+  deletePost,
+} from '../firebase/methods.js';
+import { Post } from './Post.js';
+
+import {
+  publicPost,
+} from '../lib/index.js';
 
 //
 export const Home = () => {
+  const user = getUser();
   const divHome = document.createElement('div');
   // Logo
   const divMenu = document.createElement('div');
@@ -30,22 +43,23 @@ export const Home = () => {
   // ProfilePost
   const formBoxProfile = document.createElement('form');
   formBoxProfile.className = 'profilePost';
+  // const userName = document.getElementById('name');
   const divUserName = document.createElement('div');
   divUserName.className = 'userName';
-  divUserName.textContent = 'NOMBRE DE LA PERSONA LOGEADA';
+  divUserName.textContent = user ? user.displayName : 'Nombre del usuario'; //  nombre del usuario
   const spamUser = document.createElement('spam');
   spamUser.className = 'spamuser';
   const divPost = document.createElement('div');
   divPost.className = 'divPostHome';
-  const inputPost = document.createElement('input');
+  const inputPost = document.createElement('input'); // input
   inputPost.className = 'postHome';
   inputPost.placeholder = '¿Qué estás pensando?';
   const divbuttonPublish = document.createElement('div');
   divbuttonPublish.className = 'divButtonPublish';
-  const buttonPublish = document.createElement('button');
+  const buttonPublish = document.createElement('button')
   buttonPublish.textContent = 'Publicar';
   buttonPublish.className = 'buttonPublish button';
-
+  // contenedor de los post
   formBoxProfile.appendChild(divUserName);
   formBoxProfile.appendChild(divPost);
   formBoxProfile.appendChild(divbuttonPublish);
@@ -54,47 +68,40 @@ export const Home = () => {
   divbuttonPublish.appendChild(buttonPublish);
   divContainer.appendChild(formBoxProfile);
   // Pizarra dinámica
-  const formPizarra = document.createElement('form');
-  formPizarra.className = 'profilePizarra';
-  const divPizarraName = document.createElement('div');
-  divPizarraName.className = 'pizarraName';
-  const spamUserPizarra = document.createElement('spam');
-  spamUserPizarra.className = 'spamPizarra';
-  const divPostPizarra = document.createElement('div');
-  divPostPizarra.className = 'divPostBoard';
-  const inputPizarra = document.createElement('input');
-  inputPizarra.className = 'postBoard';
-  inputPizarra.placeholder = 'aquI irá su comentario';
-  const divButtons = document.createElement('div');
-  divButtons.className = 'buttons';
-  const buttonLike = document.createElement('button');
-  buttonLike.textContent = '';
-  buttonLike.className = 'buttonLike buttonBoard';
-  const imgPlane = document.createElement('img');
-  imgPlane.src = '/img/planeLike.png';
-  imgPlane.className = 'imgPlane';
-  const buttonEdit = document.createElement('button');
-  buttonEdit.textContent = 'editar';
-  buttonEdit.className = 'buttonEdit buttonBoard';
-  const buttonDelete = document.createElement('button');
-  buttonDelete.textContent = 'delete';
-  buttonDelete.className = 'buttonDelete buttonBoard';
+  // Lógica
+  const btnPublic = divHome.querySelector('.buttonPublish');
+  const inputValue = divHome.querySelector('.postHome');
+  const divContainerPost = document.createElement('div');
 
-  formPizarra.appendChild(divPizarraName);
-  formPizarra.appendChild(divPostPizarra);
-  formPizarra.appendChild(divButtons);
-  divPizarraName.appendChild(spamUserPizarra);
-  divPostPizarra.appendChild(inputPizarra);
-  divButtons.appendChild(buttonLike);
-  buttonLike.appendChild(imgPlane);
-  divButtons.appendChild(buttonEdit);
-  divButtons.appendChild(buttonDelete);
-  divContainer.appendChild(formPizarra);
-  // const divBoxPost = document.createElement('div');
-  // const divBoxPublish = document.createElement('div');
-  // divContainer.appendChild(divBoxMain);
-  // divBoxMain.appendChild(divBoxPost);
-  // divBoxMain.appendChild(divBoxPublish);
-  // console.log('estoy en el Home');
+  window.addEventListener('DOMContentLoaded', async () => {
+    onGetPosts((querySnapshot) => {
+      divContainerPost.innerHTML = '';
+      console.log(querySnapshot);
+      querySnapshot.forEach((doc) => {
+        const postData = doc.data().post;
+        const postIdentity = doc.id; // user.uid
+        console.log(postIdentity); // .document(uid)
+        console.log(postData);
+        divContainerPost.appendChild(Post(postData, postIdentity));
+        divHome.appendChild(divContainerPost);
+      });
+      const btnsDelete = divContainerPost.querySelectorAll('.buttonDelete');
+      btnsDelete.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const idPost = e.target.dataset.id;
+          console.log('delete', idPost.id);
+          deletePost(idPost);
+        });
+      });
+    });
+  });
+
+  btnPublic.addEventListener('click', (e) => {
+    e.preventDefault();
+    publicPost(inputValue.value, createPost);
+    document.querySelector('.postHome').value = '';
+  });
+
   return divHome;
 };
