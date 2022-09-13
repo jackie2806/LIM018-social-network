@@ -26,8 +26,6 @@ const loginEmailPassword = async () => {
     console.log(error);
   }
 };
-<<<<<<< HEAD
-=======
 
 const signInGoogle = () => {
   signInWithPopup(auth, provider)
@@ -47,7 +45,6 @@ const signInGoogle = () => {
       // const credential = GoogleAuthProvider.credentialFromError(error);
     });
 };
->>>>>>> 643ee35ff7855f531b5e0820a53fe3f9dbcc2a25
 
 export const Login = () => {
   const divLogin = document.createElement('div');
@@ -77,12 +74,8 @@ export const Login = () => {
   const inputEmail = document.createElement('input');
   inputEmail.setAttribute('id', 'inputEmail'); // Id inputEmail
   inputEmail.className = 'inputEmail';
-<<<<<<< HEAD
-  inputEmail.setAttribute('id', 'inputEmail'); // id
-=======
   inputEmail.autocomplete = 'off';
   inputEmail.required = true;
->>>>>>> 643ee35ff7855f531b5e0820a53fe3f9dbcc2a25
   inputEmail.placeholder = 'ejemplo@gmail.com';
   inputEmail.autofocus = 'on';
   const divTextPassword = document.createElement('div');
@@ -106,11 +99,7 @@ export const Login = () => {
   divInputs.appendChild(divTextForgotPassword);
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'buttonLogin';
-<<<<<<< HEAD
-  buttonLogin.addEventListener('click', () => loginEmailPassword());
-=======
   buttonLogin.addEventListener('click', loginEmailPassword);
->>>>>>> 643ee35ff7855f531b5e0820a53fe3f9dbcc2a25
   buttonLogin.setAttribute('type', 'button');
   const buttonLoginText = document.createTextNode('Iniciar Sesión');
   buttonLogin.appendChild(buttonLoginText);

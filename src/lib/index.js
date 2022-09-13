@@ -1,7 +1,4 @@
 // aqui exportaras las funciones que necesites
-<<<<<<< HEAD
-// eslint-disable-next-line import/newline-after-import, import/no-unresolved
-=======
 // Función que crea la publicación en Home
 export const publicPost = (input, createPost) => {
   if (input !== '') {
@@ -39,4 +36,3 @@ export const registerUser = async (email, password) => {
     console.error(error.message);
   }
 } */ 
->>>>>>> 643ee35ff7855f531b5e0820a53fe3f9dbcc2a25
