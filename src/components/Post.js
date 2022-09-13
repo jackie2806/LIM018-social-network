@@ -1,6 +1,5 @@
 import {
   getUser,
-  deletePost,
 } from '../firebase/methods.js';
 
 export const Post = (coment, indentity) => {
