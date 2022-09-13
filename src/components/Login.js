@@ -16,9 +16,8 @@ const loginEmailPassword = async () => {
     console.log('soy try');
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     if (userCredential.user && email !== '' && password !== '') {
-      // console.log('Aquí me muestro');
       saveUserInLocalStorage(userCredential.user);
-      onNavigate('/home'); // cómo mostrar el Home con su ruta
+      onNavigate('/home'); // mostrar el Home con su ruta
     }
     console.log('Soy un user', userCredential.user);
     console.log('estoy legeado', auth.currentUser);
@@ -35,8 +34,8 @@ const signInGoogle = () => {
       console.log('Usuario', credential);
       console.log(result);
       onNavigate('/home');
-      //const token = credential.accessToken;
-      //const user = result.user;
+      // const token = credential.accessToken;
+      // const user = result.user;
     // console.log(user);
     }).catch((error) => {
       const errorCode = error.code;
