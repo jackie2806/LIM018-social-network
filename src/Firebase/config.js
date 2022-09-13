@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 // eslint-disable-next-line import/no-unresolved
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js';
+// eslint-disable-next-line import/no-unresolved
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -12,8 +13,10 @@ const firebaseConfig = {
   storageBucket: 'placematch-e45a0.appspot.com',
   messagingSenderId: '84299651513',
   appId: '1:84299651513:web:4fcad2183d4ffcfa793e68',
+<<<<<<< HEAD
 
+=======
+>>>>>>> 643ee35ff7855f531b5e0820a53fe3f9dbcc2a25
 };
-
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
