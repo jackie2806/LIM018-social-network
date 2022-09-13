@@ -4,6 +4,7 @@ import {
   createPost,
   // getPosts,
   onGetPosts,
+  deletePost,
 } from '../firebase/methods.js';
 import { Post } from './Post.js';
 
@@ -76,12 +77,21 @@ export const Home = () => {
       divContainerPost.innerHTML = '';
       console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
-        const postData = doc.data();
+        const postData = doc.data().post;
         const postIdentity = doc.id; // user.uid
         console.log(postIdentity); // .document(uid)
         console.log(postData);
-        divContainerPost.appendChild(Post(postData.post, postIdentity));
+        divContainerPost.appendChild(Post(postData, postIdentity));
         divHome.appendChild(divContainerPost);
+      });
+      const btnsDelete = divContainerPost.querySelectorAll('.buttonDelete');
+      btnsDelete.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const idPost = e.target.dataset.id;
+          console.log('delete', idPost.id);
+          deletePost(idPost);
+        });
       });
     });
   });
