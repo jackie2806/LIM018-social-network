@@ -38,11 +38,6 @@
   },
   "dependencies": {
     "firebase": "^9.9.2"
-  },
-  "jest": {
-    "testEnvironment": "--env=jsdom",
-    "testEnvironmentOptions": {
-      "html": "<!DOCTYPE html><div id='app'></div></html>"
-    }
   }
+
 }

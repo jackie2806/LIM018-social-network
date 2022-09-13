@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-cycle
+// eslint-disable-next-line import/no-cycle, import/no-duplicates
 import { onNavigate } from '../main.js';
 import {
   auth,
@@ -55,7 +55,7 @@ export const Login = () => {
   const arrowImgLogin = document.createElement('img');
   arrowImgLogin.className = 'arrowImgLogin';
   arrowImgLogin.addEventListener('click', () => onNavigate('/'));
-  arrowImgLogin.src = '../img/arrow.png';
+  arrowImgLogin.src = '../img/arrowregister.png';
   arrowImgLogin.alt = 'ArrowLeft';
   divArrowLogin.appendChild(arrowImgLogin);
   const divLoginImg = document.createElement('div');
@@ -84,6 +84,7 @@ export const Login = () => {
   const inputPassword = document.createElement('input');
   inputPassword.setAttribute('id', 'inputPassword'); // Id password
   inputPassword.className = 'inputPassword';
+  inputPassword.setAttribute('id', 'inputPassword'); // Id
   inputPassword.placeholder = 'Contraseña';
   inputPassword.autocomplete = 'off';
   inputPassword.required = true;
