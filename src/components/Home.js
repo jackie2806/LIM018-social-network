@@ -89,7 +89,7 @@ export const Home = () => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
           const idPost = e.target.dataset.id;
-          console.log('delete', idPost.id);
+          console.log('delete', idPost);
           deletePost(idPost);
         });
       });

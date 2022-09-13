@@ -35,12 +35,6 @@ export const Post = (coment, indentity) => {
   buttonDelete.textContent = 'delete'; // llamar Button, caputrar el  id y firebase
   buttonDelete.className = 'buttonDelete buttonBoard';
   buttonDelete.setAttribute('data-id', indentity);
-  // evento para eliminar
-/*   buttonDelete.addEventListener('click', (e) => {
-    e.preventDefault();
-    publicPost(inputValue.value, createPost);
-    document.querySelector('.postHome').value = '';
-  }); */
   formPizarra.appendChild(divPizarraName);
   formPizarra.appendChild(divPostPizarra);
   formPizarra.appendChild(divButtons);
