@@ -13,6 +13,7 @@ import {
   publicPost,
 } from '../lib/index.js';
 
+//
 export const Home = () => {
   const user = getUser();
   const divHome = document.createElement('div');

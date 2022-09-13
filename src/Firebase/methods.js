@@ -105,9 +105,7 @@ export const onGetPosts = (callback) => onSnapshot(collection(dataBase, 'post'),
 export const deletePost = (id) => {};
 
 export {
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
 };
-

@@ -1,5 +1,10 @@
 // eslint-disable-next-line import/no-cycle, import/no-duplicates
 import { onNavigate } from '../main.js';
+<<<<<<< HEAD
+import { auth, signInWithEmailAndPassword, signInWithPopup, provider } from '../firebase/methods.js';
+// eslint-disable-next-line import/no-unresolved
+import { Home } from './Home.js';
+=======
 import {
   auth,
   signInWithEmailAndPassword,
@@ -8,6 +13,7 @@ import {
   GoogleAuthProvider,
   saveUserInLocalStorage,
 } from '../firebase/methods.js';
+>>>>>>> 643ee35ff7855f531b5e0820a53fe3f9dbcc2a25
 
 const loginEmailPassword = async () => {
   const email = document.getElementById('inputEmail').value;
@@ -24,6 +30,23 @@ const loginEmailPassword = async () => {
   } catch (error) {
     console.log(error);
   }
+};
+const signInGoogle = () => {
+  /* const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInwithPopup(provider); */
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+
+    // console.log(user);
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // const email = error.customData.email;
+      // const credential = GoogleAuthProvider.credentialFromError(error);
+    });
 };
 
 const signInGoogle = () => {
@@ -98,7 +121,12 @@ export const Login = () => {
   divInputs.appendChild(divTextForgotPassword);
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'buttonLogin';
+<<<<<<< HEAD
+  buttonLogin.addEventListener('click', () => loginEmailPassword());
+  buttonLogin.addEventListener('click', () => onNavigate('/home')); // Ver Firebase / no debería pasar al home hasta que se verifique los imputs validados
+=======
   buttonLogin.addEventListener('click', loginEmailPassword);
+>>>>>>> 643ee35ff7855f531b5e0820a53fe3f9dbcc2a25
   buttonLogin.setAttribute('type', 'button');
   const buttonLoginText = document.createTextNode('Iniciar Sesión');
   buttonLogin.appendChild(buttonLoginText);
@@ -108,7 +136,12 @@ export const Login = () => {
   const text = document.createElement('div');
   text.textContent = '-O-';
   const buttonGoogle = document.createElement('button');
+<<<<<<< HEAD
+  buttonGoogle.addEventListener('click', () => signInGoogle());
+  buttonGoogle.addEventListener('click', () => onNavigate('/home'));
+=======
   buttonGoogle.addEventListener('click', signInGoogle);
+>>>>>>> 643ee35ff7855f531b5e0820a53fe3f9dbcc2a25
   buttonGoogle.className = 'buttonGoogle';
   buttonGoogle.setAttribute('type', 'button');
   const buttonGoogleText = document.createTextNode('Iniciar con Google');
