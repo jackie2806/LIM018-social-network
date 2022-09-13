@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 import { registrar } from '../Firebase/methods.js';
+
 export const Register = () => {
     const divContainer = document.createElement('div');
     const divRegister = document.createElement('div');
@@ -93,6 +94,7 @@ export const Register = () => {
     divImgContrasena.appendChild(imgContrasena);
     divContrasena.appendChild(inputContrasena);
     formRegister.appendChild (divContrasena);
+    mostrarContrasena (inputContrasena, imgContrasena)
 
     // confirmar contrasena
     const divConfirmContrasena = document.createElement('div');
@@ -102,7 +104,7 @@ export const Register = () => {
     inputConfirmContrasena.placeholder = 'Confime la contrasena';
     inputConfirmContrasena.autocomplete = 'off';
     inputConfirmContrasena.minLength = '6';
-    inputConfirmContrasena.id = 'ConfirmPassword';
+    inputConfirmContrasena.id = 'confirmPassword';
     inputConfirmContrasena.type = 'password';
     inputConfirmContrasena.required = true;
     const divImgContrasena2 = document.createElement('div');
@@ -115,6 +117,7 @@ export const Register = () => {
     divImgContrasena2.appendChild(imgConfirmContrasena);
     divConfirmContrasena.appendChild(inputConfirmContrasena);
     formRegister.appendChild (divConfirmContrasena);
+    mostrarContrasena (inputConfirmContrasena, imgConfirmContrasena);
 
     // botton registrar
     const buttonRegister = document.createElement('div');
@@ -142,10 +145,28 @@ export const Register = () => {
 
     formRegister.addEventListener('submit', (evt) => {
         evt.preventDefault()
-        registrar()
+        if (contrasenas()) {
+          registrar()
+        } else {
+          alert ('las contraseñas no son iguales corrígelas')
+        }
     })
     return divContainer
 };
+
+function contrasenas () {
+  const inputContrasena=document.getElementById('password').value
+  const inputConfirmContrasena=document.getElementById('confirmPassword').value
+  return inputContrasena === inputConfirmContrasena
+}
+
+function mostrarContrasena (input, ver) {
+  ver.addEventListener('click', (evt) => {
+    input.type = (input.type === 'password' ? 'text' : 'password');
+  });
+  console.log(input)
+  console.log(ver)
+}
 
 export function dataRegister () {
   const email=document.getElementById('email').value 
@@ -157,4 +178,5 @@ export function dataRegister () {
     name: name,
   }
 };
+
 

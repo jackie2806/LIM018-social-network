@@ -45,7 +45,7 @@ export const registrar = async () => {
     console.log(dataRegister)
 
     alert(`hola ${data.name} ya estás registrado`)
-    onNavigate('/home')
+    onNavigate('/login')
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;

@@ -88,10 +88,15 @@ export const Login = () => {
   inputPassword.autocomplete = 'off';
   inputPassword.required = true;
   inputPassword.type = 'password';
+  const imgContrasena = document.createElement('img');
+  imgContrasena.className = 'imgContrasena';
+  imgContrasena.src = '/img/Vector-ojito.png';
+  imgContrasena.alt = 'logoContrasena';
   divInputs.appendChild(divTextEmail);
   divInputs.appendChild(inputEmail);
   divInputs.appendChild(divTextPassword);
   divInputs.appendChild(inputPassword);
+  divInputs.appendChild(imgContrasena);
   const divTextForgotPassword = document.createElement('div');
   divTextForgotPassword.className = 'divForgotPassword';
   divTextForgotPassword.textContent = '¿Olvidaste tu contraseña?';
@@ -122,3 +127,9 @@ export const Login = () => {
 
   return divLogin;
 };
+
+function mostrarContrasena (input, ver) {
+  ver.addEventListener('click', (evt) => {
+    input.type = (input.type === 'password' ? 'text' : 'password');
+  });
+}
