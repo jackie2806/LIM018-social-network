@@ -11,7 +11,7 @@ import { Home } from './components/Home.js ';
 
 import { isLoggedIn } from './firebase/methods.js';
 
-const divRoot = document.getElementById('root')
+const divRoot = document.getElementById('root');
 
 const routes = {
   '/': Init,
@@ -21,22 +21,20 @@ const routes = {
 };
 
 const verificarAcceso = (pathname) => {
-  const estoyLogeado = isLoggedIn()
-
+  const estoyLogeado = isLoggedIn();
   switch (pathname) {
     case '/home':
       // esta en /home y no esta logeado
-      if (estoyLogeado === null) {
-        window.location.href = "/"
-      } 
-    break;
+      if (!estoyLogeado) {
+         window.location.href = '/';
+      }
+      break;
   }
-}
+};
 
 // logica para navegar en la web por links
 export const onNavigate = (pathname) => {
-  verificarAcceso(pathname)
-
+  verificarAcceso(pathname);
   window.history.pushState(
     {},
     pathname,
@@ -50,11 +48,11 @@ export const onNavigate = (pathname) => {
 
 // logica de inicio
 const component = routes[window.location.pathname];
-// verificarAcceso (window.location.pathname)
+verificarAcceso(window.location.pathname);
 
 // logica por si cambia la navegacion por el navegador (atras, adelante o f5)
 window.onpopstate = () => {
-  verificarAcceso(window.location.pathname)
+  verificarAcceso(window.location.pathname);
 
   while (divRoot.firstChild) {
     divRoot.removeChild(divRoot.firstChild);

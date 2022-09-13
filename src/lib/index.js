@@ -1,4 +1,18 @@
 // aqui exportaras las funciones que necesites
+// Función que crea la publicación en Home
+export const publicPost = (input, createPost) => {
+  if (input !== '') {
+    createPost(input);
+  } else {
+    alert('Ingresa un mensaje');
+  }
+};
+
+
+
+
+
+
 // eslint-disable-next-line import/newline-after-import
 // import { auth, onAuthStateChanged } from '../firebase/config.js';
 // import { createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js';
