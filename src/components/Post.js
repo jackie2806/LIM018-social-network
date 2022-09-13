@@ -15,7 +15,7 @@ export const Post = (coment, indentity) => {
   spamUserPizarra.textContent = user ? user.displayName : 'Nombre del usuario';
   const divPostPizarra = document.createElement('div');
   divPostPizarra.className = 'divPostBoard';
-  const inputPizarra = document.createElement('input');
+  const inputPizarra = document.createElement('input'); // input
   inputPizarra.className = 'postBoard';
   inputPizarra.placeholder = `${coment}`;
   inputPizarra.setAttribute('data-id', indentity);
