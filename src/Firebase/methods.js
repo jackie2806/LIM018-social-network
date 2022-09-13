@@ -30,6 +30,29 @@ export const dataBase = getFirestore(app);
 export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
 
+// REGISTER // no pega esto desde git pull
+
+export const registrar = async () => {
+  const data = dataRegister()
+
+  try {
+    const dataRegister = await createUserWithEmailAndPassword (auth, data.email, data.password)
+
+    await updateProfile(dataRegister.user, {
+      displayName: data.name,
+    })
+    console.log(dataRegister)
+
+    alert(`hola ${data.name} ya estás registrado`)
+    onNavigate('/login')
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    alert (errorMessage)
+  };
+
+}
+
 // LOGIN
 export const isLoggedIn = () => {
 // console.log(getAuth(app));
