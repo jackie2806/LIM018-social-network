@@ -5,7 +5,7 @@ import { Init } from './components/Init.js';
 // eslint-disable-next-line import/no-cycle
 import { Login } from './components/Login.js';
 // eslint-disable-next-line import/no-cycle
-import Register from './components/Register.js';
+import { Register } from './components/Register.js';
 // eslint-disable-next-line import/no-unresolved
 import { Home } from './components/Home.js ';
 
@@ -50,7 +50,7 @@ export const onNavigate = (pathname) => {
 
 // logica de inicio
 const component = routes[window.location.pathname];
-// verificarAcceso (window.location.pathname) .... 
+// verificarAcceso (window.location.pathname)
 
 // logica por si cambia la navegacion por el navegador (atras, adelante o f5)
 window.onpopstate = () => {

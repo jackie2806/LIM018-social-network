@@ -9,9 +9,9 @@ const loginEmailPassword = async () => {
   const password = document.getElementById('inputPassword').value;
   try {
     console.log('soy try');
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const userCredential = await signInWithEmailAndPassword(auth, inputEmail, inputPassword);
     if (userCredential.user) {
-      console.log('Aquí dice Jackie', Home());
+      console.log('Aquí dice Arkelly', Home());
       return Home(); // cómo mostrar el Home con su ruta
     }
     console.log('Soy un user', userCredential.user);
@@ -24,19 +24,19 @@ export const Login = () => {
   const divLogin = document.createElement('div');
   divLogin.className = 'divLogin';
   // Logo
-  const divArrowBack = document.createElement('div');
-  divArrowBack.className = 'divArrowBack';
+  const divArrowLogin = document.createElement('div');
+  divArrowLogin.className = 'divArrowLogin';
   const arrowImgLogin = document.createElement('img');
   arrowImgLogin.className = 'arrowImgLogin';
   arrowImgLogin.addEventListener('click', () => onNavigate('/'));
-  arrowImgLogin.src = '/img/arrowregister.png';
+  arrowImgLogin.src = '../img/arrow.png';
   arrowImgLogin.alt = 'ArrowLeft';
-  divArrowBack.appendChild(arrowImgLogin);
+  divArrowLogin.appendChild(arrowImgLogin);
   const divLoginImg = document.createElement('div');
   divLoginImg.className = 'divLoginImg';
   const imgLoginLogo = document.createElement('img');
   imgLoginLogo.className = 'imgLoginLogo';
-  imgLoginLogo.src = '/img/logoMobile.png';
+  imgLoginLogo.src = '../img/logoMobile.png';
   imgLoginLogo.alt = 'Logo';
   divLoginImg.appendChild(imgLoginLogo);
   // inputs
@@ -60,6 +60,10 @@ export const Login = () => {
   divInputs.appendChild(inputEmail);
   divInputs.appendChild(divTextPassword);
   divInputs.appendChild(inputPassword);
+  const divTextForgotPassword = document.createElement('div');
+  divTextForgotPassword.className = 'divForgotPassword';
+  divTextForgotPassword.textContent = '¿Olvidaste tu contraseña?';
+  divInputs.appendChild(divTextForgotPassword);
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'buttonLogin';
   buttonLogin.addEventListener('click', () => loginEmailPassword());
@@ -79,7 +83,7 @@ export const Login = () => {
   buttonGoogle.appendChild(buttonGoogleText);
   divLoginOthers.appendChild(text);
   divLoginOthers.appendChild(buttonGoogle);
-  divLogin.appendChild(divArrowBack);
+  divLogin.appendChild(divArrowLogin);
   divLogin.appendChild(divLoginImg);
   divLogin.appendChild(divInputs);
   divLogin.appendChild(divLoginOthers);
