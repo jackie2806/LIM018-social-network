@@ -6,6 +6,7 @@ import {
   onGetPosts,
   deletePost,
   getPost,
+  updatePost,
 } from '../firebase/methods.js';
 import { Post } from './Post.js';
 
@@ -95,14 +96,26 @@ export const Home = () => {
         });
       });
       const btnsEdit = divContainerPost.querySelectorAll('.buttonEdit');
-      
+      const inputsPostPrinter = divContainerPost.querySelectorAll('.postBoard');
+      const btnEdit = divContainerPost.querySelector('.buttonEdit');
+      console.log('NodeList de inputs', inputsPostPrinter);
       btnsEdit.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           e.preventDefault();
           const doc = await getPost(e.target.dataset.id);
           const postPrinter = doc.data().post;
-          console.log(postPrinter);
-          divContainerPost.querySelector('.postBoard').value = postPrinter;
+          console.log('estoy en el primer for', postPrinter);
+          inputsPostPrinter.forEach((posting) => {
+            console.log('soy posting id', posting.id);
+            if (btnsEdit.length >= 1 && inputsPostPrinter.length >= 1) {
+              if (btnsEdit[0].id === inputsPostPrinter[0].id) {
+                console.log('match...', btnsEdit[0]);
+                inputsPostPrinter[0].value = postPrinter;
+                updatePost(doc.id, { post: inputsPostPrinter[0].value });
+                btnEdit.textContent = 'Actualizar';
+              }
+            }
+          });
         });
       });
     });
