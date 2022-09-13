@@ -5,7 +5,7 @@ import { Init } from './components/Init.js';
 // eslint-disable-next-line import/no-cycle
 import { Login } from './components/Login.js';
 // eslint-disable-next-line import/no-cycle
-import Register from './components/Register.js';
+import { Register } from './components/Register.js';
 // eslint-disable-next-line import/no-unresolved
 import { Home } from './components/Home.js ';
 
@@ -17,7 +17,7 @@ const routes = {
   '/': Init,
   '/register': Register,
   '/login': Login,
-  '/home': Home, // ruta protegida
+  '/home': Home, // ruta protegida.
 };
 
 const verificarAcceso = (pathname) => {
