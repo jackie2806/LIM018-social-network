@@ -86,7 +86,7 @@ export const createPost = (post) => addDoc(collection(dataBase, 'post'), { post 
 export const getPosts = () => getDocs(collection(dataBase, 'post'));
 export const onGetPosts = (callback) => onSnapshot(collection(dataBase, 'post'), callback);
 export const deletePost = (id) => deleteDoc(doc(dataBase, 'post', id));
-
+//  aqui se hace el comentario de prueba
 export {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
