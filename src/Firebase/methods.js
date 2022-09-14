@@ -41,9 +41,9 @@ export const registrar = async () => {
 
     await updateProfile(dataRegister.user, {
       displayName: data.name,
-    })
-    console.log(dataRegister)
 
+    })
+  
     alert(`hola ${data.name} ya estás registrado`)
     onNavigate('/login')
   } catch (error) {
