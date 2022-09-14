@@ -44,7 +44,6 @@ export const Home = () => {
   // ProfilePost
   const formBoxProfile = document.createElement('form');
   formBoxProfile.className = 'profilePost';
-  // const userName = document.getElementById('name');
   const divUserName = document.createElement('div');
   divUserName.className = 'userName';
   divUserName.textContent = user ? user.displayName : 'Nombre del usuario'; //  nombre del usuario

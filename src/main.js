@@ -26,7 +26,7 @@ const verificarAcceso = (pathname) => {
     case '/home':
       // esta en /home y no esta logeado
       if (!estoyLogeado) {
-         window.location.href = '/';
+        window.location.href = '/';
       }
       break;
   }
