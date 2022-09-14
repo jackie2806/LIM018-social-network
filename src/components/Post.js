@@ -6,7 +6,6 @@ export const Post = (coment, indentity) => {
   const user = getUser();
   const divContainerPost = document.createElement('div');
   divContainerPost.className = 'container';
-  /* divContainerPost.setAttribute('data-id', indentity); */
   const formPizarra = document.createElement('form');
   formPizarra.className = 'profilePizarra';
   const divPizarraName = document.createElement('div');
