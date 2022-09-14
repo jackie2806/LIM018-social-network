@@ -86,7 +86,7 @@ export const Home = () => {
       divContainerPost.innerHTML = '';
       // console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
-        const postData = doc.data().post;
+        const postData = doc.data().text;
         const postIdentity = doc.id; // user.uid (para hallar el identificador del usuario)
         // console.log(postIdentity);
         divContainerPost.appendChild(Post(postData, postIdentity));
@@ -104,7 +104,24 @@ export const Home = () => {
       });
 
       // Editar datos de Firebase
-
+      const btnsEdit = divContainerPost.querySelectorAll('.buttonEdit');
+      const inputPostBoard = divContainerPost.querySelector('.postBoard');
+      const btnEdit = divContainerPost.querySelector('.buttonEdit');
+      let postId = '';
+      btnsEdit.forEach((btn) => {
+        btn.addEventListener('click', async (e) => {
+          e.preventDefault();
+          const doc = await getPost(e.target.dataset.id);
+          const text = doc.data().text;
+          console.log(text);
+          inputPostBoard.value = text;
+          postId = doc.id;
+          btnEdit.textContent = 'Actualizar';
+          if (inputPostBoard.value !== '') {
+            updatePost(postId, { text: text.value });
+          }
+        });
+      });
     /*
       const btnsEdit = divContainerPost.querySelectorAll('.buttonEdit');
       const inputsPostBoard = divContainerPost.querySelectorAll('.postBoard');
