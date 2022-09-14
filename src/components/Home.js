@@ -1,10 +1,12 @@
 // lógica
 import {
   getUser,
-  createPost,
+  savePost,
   // getPosts,
   onGetPosts,
   deletePost,
+  getPost,
+  updatePost,
 
 } from '../firebase/methods.js';
 import { Post } from './Post.js';
@@ -68,11 +70,17 @@ export const Home = () => {
   divbuttonPublish.appendChild(buttonPublish);
   divContainer.appendChild(formBoxProfile);
   // Pizarra dinámica
-  // Lógica
+  // Lógica CRUD
   const btnPublic = divHome.querySelector('.buttonPublish');
   const inputValue = divHome.querySelector('.postHome');
   const divContainerPost = document.createElement('div');
-
+  // Guardar datos en FireBase
+  btnPublic.addEventListener('click', (e) => {
+    e.preventDefault();
+    publicPost(inputValue.value, savePost);
+    document.querySelector('.postHome').value = '';
+  });
+  // Mostrar datos guardados en Firebase
   window.addEventListener('DOMContentLoaded', async () => {
     onGetPosts((querySnapshot) => {
       divContainerPost.innerHTML = '';
@@ -85,6 +93,7 @@ export const Home = () => {
         divContainerPost.appendChild(Post(postData, postIdentity));
         divHome.appendChild(divContainerPost);
       });
+      // Eliminar datos de Firebase
       const btnsDelete = divContainerPost.querySelectorAll('.buttonDelete');
       btnsDelete.forEach((btn) => {
         btn.addEventListener('click', (e) => {
@@ -94,13 +103,16 @@ export const Home = () => {
           deletePost(idPost);
         });
       });
+
+      // Editar datos de Firebase
+
+    /*
       const btnsEdit = divContainerPost.querySelectorAll('.buttonEdit');
       const inputsPostBoard = divContainerPost.querySelectorAll('.postBoard');
       const btnEdit = divContainerPost.querySelector('.buttonEdit');
 
       const valueInputBoard = divContainerPost.querySelector('.postBoard');
       // const inputPostBoard = divContainer.querySelector('.postBoard');
-      
       console.log('NodeList de inputs', inputsPostBoard);
       btnsEdit.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
@@ -113,7 +125,7 @@ export const Home = () => {
             console.log('soy posting id', posting.id);
             let match;
             if (btnsEdit.length === 1 && inputsPostBoard.length === 1) {
-              match = btnsEdit[0].getAttribute('data-id') === inputsPostBoard[0].getAttribute('data-id');
+  match = btnsEdit[0].getAttribute('data-id') === inputsPostBoard[0].getAttribute('data-id');
               if (match) {
                 console.log(valueInputBoard.value);
                 valueInputBoard.value = postPrinter;
@@ -123,15 +135,11 @@ export const Home = () => {
             }
           });
         });
-      });
+      }); */
     });
   });
 
-  btnPublic.addEventListener('click', (e) => {
-    e.preventDefault();
-    publicPost(inputValue.value, createPost);
-    document.querySelector('.postHome').value = '';
-  });
+ 
 
   return divHome;
 };
