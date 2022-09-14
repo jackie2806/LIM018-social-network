@@ -84,12 +84,11 @@ export const Home = () => {
   window.addEventListener('DOMContentLoaded', async () => {
     onGetPosts((querySnapshot) => {
       divContainerPost.innerHTML = '';
-      console.log(querySnapshot);
+      // console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
         const postData = doc.data().post;
-        const postIdentity = doc.id; // user.uid
-        console.log(postIdentity); // .document(uid)
-        console.log(postData);
+        const postIdentity = doc.id; // user.uid (para hallar el identificador del usuario)
+        // console.log(postIdentity);
         divContainerPost.appendChild(Post(postData, postIdentity));
         divHome.appendChild(divContainerPost);
       });
@@ -99,7 +98,7 @@ export const Home = () => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
           const idPost = e.target.dataset.id;
-          console.log('delete', idPost.id);
+          // console.log('delete', idPost.id);
           deletePost(idPost);
         });
       });
