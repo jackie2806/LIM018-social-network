@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/order
 import { app } from './config.js';
 import {
   getAuth,
@@ -22,8 +23,6 @@ import {
 // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-firestore.js';
 
-import { dataRegister } from '../components/Register.js';
-import { onNavigate } from '../main.js';
 
 export const saveUserInLocalStorage = (user) => localStorage.setItem('currentUser', JSON.stringify(user));
 export const getUserFromLocalStorage = () => JSON.parse(localStorage.getItem('currentUser'));
@@ -32,7 +31,8 @@ export const dataBase = getFirestore(app);
 export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
 
-// REGISTER
+// REGISTER // no pega esto desde git pull
+
 export const registrar = async () => {
   const data = dataRegister()
 
@@ -81,33 +81,15 @@ export const getUser = () => {
   return null;
 };
 
-/* export const signInGoogle = (onNavigate) => {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      saveUserInLocalStorage(result.user);
-      console.log('Usuario', credential);
-      console.log(result);
-      onNavigate('/home');
-      //const token = credential.accessToken;
-      //const user = result.user;
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // const email = error.customData.email;
-      // const credential = GoogleAuthProvider.credentialFromError(error);
-    });
-}; */
-// CRUD
-
+// Métodos para hacer el CRUD (Create, Read, Update and Delete)
 export const createPost = (post) => addDoc(collection(dataBase, 'post'), { post });
 export const getPosts = () => getDocs(collection(dataBase, 'post'));
 export const onGetPosts = (callback) => onSnapshot(collection(dataBase, 'post'), callback);
-export const deletePost = (id) => {};
+export const deletePost = (id) => deleteDoc(doc(dataBase, 'post', id));
 
 export {
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
   GoogleAuthProvider,
-  signInWithPopup
 };
-

@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-cycle
+// eslint-disable-next-line import/no-cycle, import/no-duplicates
 import { onNavigate } from '../main.js';
 import {
   auth,
@@ -16,9 +16,8 @@ const loginEmailPassword = async () => {
     console.log('soy try');
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     if (userCredential.user && email !== '' && password !== '') {
-      // console.log('Aquí me muestro');
       saveUserInLocalStorage(userCredential.user);
-      onNavigate('/home'); // cómo mostrar el Home con su ruta
+      onNavigate('/home'); // mostrar el Home con su ruta
     }
     console.log('Soy un user', userCredential.user);
     console.log('estoy legeado', auth.currentUser);
@@ -26,6 +25,7 @@ const loginEmailPassword = async () => {
     console.log(error);
   }
 };
+
 
 const signInGoogle = () => {
   signInWithPopup(auth, provider)
@@ -35,8 +35,8 @@ const signInGoogle = () => {
       console.log('Usuario', credential);
       console.log(result);
       onNavigate('/home');
-      //const token = credential.accessToken;
-      //const user = result.user;
+      // const token = credential.accessToken;
+      // const user = result.user;
     // console.log(user);
     }).catch((error) => {
       const errorCode = error.code;
@@ -55,7 +55,7 @@ export const Login = () => {
   const arrowImgLogin = document.createElement('img');
   arrowImgLogin.className = 'arrowImgLogin';
   arrowImgLogin.addEventListener('click', () => onNavigate('/'));
-  arrowImgLogin.src = '../img/arrow.png';
+  arrowImgLogin.src = '../img/arrowregister.png';
   arrowImgLogin.alt = 'ArrowLeft';
   divArrowLogin.appendChild(arrowImgLogin);
   const divLoginImg = document.createElement('div');
@@ -84,6 +84,7 @@ export const Login = () => {
   const inputPassword = document.createElement('input');
   inputPassword.setAttribute('id', 'inputPassword'); // Id password
   inputPassword.className = 'inputPassword';
+  inputPassword.setAttribute('id', 'inputPassword'); // Id
   inputPassword.placeholder = 'Contraseña';
   inputPassword.autocomplete = 'off';
   inputPassword.required = true;
