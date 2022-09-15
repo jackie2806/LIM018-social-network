@@ -17,7 +17,7 @@ export const Post = (coment, indentity) => {
   divPostPizarra.className = 'divPostBoard';
   const inputPizarra = document.createElement('input'); // input
   inputPizarra.className = 'postBoard';
-  inputPizarra.placeholder = `${coment}`;
+  inputPizarra.value = coment;
   inputPizarra.setAttribute('data-id', indentity);
   const divButtons = document.createElement('div');
   divButtons.className = 'buttons';
