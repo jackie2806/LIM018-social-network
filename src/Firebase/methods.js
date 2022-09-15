@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 // eslint-disable-next-line import/order
 import { app } from './config.js';
 import {
@@ -82,10 +83,12 @@ export const getUser = () => {
 };
 
 // Métodos para hacer el CRUD (Create, Read, Update and Delete)
-export const createPost = (post) => addDoc(collection(dataBase, 'post'), { post });
-export const getPosts = () => getDocs(collection(dataBase, 'post'));
-export const onGetPosts = (callback) => onSnapshot(collection(dataBase, 'post'), callback);
-export const deletePost = (id) => deleteDoc(doc(dataBase, 'post', id));
+export const savePost = (text) => addDoc(collection(dataBase, 'posts'), { text });
+export const getPosts = () => getDocs(collection(dataBase, 'posts'));
+export const onGetPosts = (callback) => onSnapshot(collection(dataBase, 'posts'), callback);
+export const deletePost = (id) => deleteDoc(doc(dataBase, 'posts', id));
+export const getPost = (id) => getDoc(doc(dataBase, 'posts', id));
+export const updatePost = (id, newPost) => updateDoc(doc(dataBase, id), newPost);
 
 export {
   createUserWithEmailAndPassword,

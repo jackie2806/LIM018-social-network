@@ -74,11 +74,21 @@ export const Home = () => {
   const btnPublic = divHome.querySelector('.buttonPublish');
   const inputValue = divHome.querySelector('.postHome');
   const divContainerPost = document.createElement('div');
+  let postId = '';
+  let statusEdit = false;
+  console.log('Status global', statusEdit);
   // Guardar datos en FireBase
   btnPublic.addEventListener('click', (e) => {
     e.preventDefault();
-    publicPost(inputValue.value, savePost);
-    document.querySelector('.postHome').value = '';
+    if (!statusEdit) {
+      publicPost(inputValue.value, savePost);
+      document.querySelector('.postHome').value = '';
+    } else {
+      updatePost(postId, { text: inputValue.value });
+      statusEdit = false;
+      postId = '';
+      divContainerPost.querySelector('.buttonEdit').textContent = 'Editar';
+    }
   });
   // Mostrar datos guardados en Firebase
   window.addEventListener('DOMContentLoaded', async () => {
@@ -107,55 +117,22 @@ export const Home = () => {
       const btnsEdit = divContainerPost.querySelectorAll('.buttonEdit');
       const inputPostBoard = divContainerPost.querySelector('.postBoard');
       const btnEdit = divContainerPost.querySelector('.buttonEdit');
-      let postId = '';
+
       btnsEdit.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           e.preventDefault();
           const doc = await getPost(e.target.dataset.id);
-          const text = doc.data().text;
-          console.log(text);
-          inputPostBoard.value = text;
+          const posting = doc.data();
+          inputPostBoard.value = posting.text;
+          statusEdit = true;
+          console.log('status en Edit', statusEdit);
           postId = doc.id;
           btnEdit.textContent = 'Actualizar';
-          if (inputPostBoard.value !== '') {
-            updatePost(postId, { text: text.value });
-          }
         });
       });
-    /*
-      const btnsEdit = divContainerPost.querySelectorAll('.buttonEdit');
-      const inputsPostBoard = divContainerPost.querySelectorAll('.postBoard');
-      const btnEdit = divContainerPost.querySelector('.buttonEdit');
-
-      const valueInputBoard = divContainerPost.querySelector('.postBoard');
-      // const inputPostBoard = divContainer.querySelector('.postBoard');
-      console.log('NodeList de inputs', inputsPostBoard);
-      btnsEdit.forEach((btn) => {
-        btn.addEventListener('click', async (e) => {
-          e.preventDefault();
-          const doc = await getPost(e.target.dataset.id);
-          const postPrinter = doc.data();
-          console.log('estoy en el primer loop , y muestro los datos de FIREBASE...');
-          console.log(postPrinter);
-          inputsPostBoard.forEach((posting) => {
-            console.log('soy posting id', posting.id);
-            let match;
-            if (btnsEdit.length === 1 && inputsPostBoard.length === 1) {
-  match = btnsEdit[0].getAttribute('data-id') === inputsPostBoard[0].getAttribute('data-id');
-              if (match) {
-                console.log(valueInputBoard.value);
-                valueInputBoard.value = postPrinter;
-                updatePost(doc.id, { post: valueInputBoard.value });
-                btnEdit.textContent = 'Actualizar';
-              }
-            }
-          });
-        });
-      }); */
     });
   });
-
- 
+  // Enviar datos a Firebase
 
   return divHome;
 };
