@@ -86,7 +86,7 @@ export const Home = () => {
   });
 
   // Mostrar datos guardados en Firebase
-  window.addEventListener('DOMContentLoaded', async () => {
+  window.addEventListener('DOMContentLoaded', () => {
     onGetPosts((querySnapshot) => {
       divContainerPost.innerHTML = '';
       // console.log(querySnapshot);
@@ -109,22 +109,21 @@ export const Home = () => {
       });
       // Editar datos de Firebase
       const btnsEdit = divContainerPost.querySelectorAll('.buttonEdit');
+
       btnsEdit.forEach((btn) => {
-        btn.addEventListener('click', async (e) => {
+        console.log(btn.dataset.id);
+        const inputEdit = document.getElementById(`${btn.dataset.id}`);
+        btn.addEventListener('click', (e) => {
           e.preventDefault();
-          // console.log(e.target.dataset.id);
-          const btnEdit = divContainerPost.querySelector('.buttonEdit');
-          const inputEdit = divContainerPost.querySelector('.postBoard');
-          const doc = await getPost(e.target.dataset.id);
-          const post = doc.data();// Aquí doc
-          // console.log(doc.data());
-          inputEdit.value = post.text;
-          btnEdit.textContent = 'Actualizar';
+          const idPost = e.target.dataset.id;
+          console.log(inputEdit);
+          btn.textContent = 'Actualizar';
+          inputEdit.removeAttribute('readonly');
+          if (inputEdit.value !== '') {
+            updatePost(idPost, { text: inputEdit.value });
+            // divContainerPost.querySelector('.buttonEdit').textContent = 'Editar';
+          }
         });
-    /*     if (inputBoard.value !== '') {
-          updatePost(postId, { text:'hola' });
-          divContainerPost.querySelector('.buttonEdit').textContent = 'Editar';
-        } */
       });
     });
     // Guardar datos en FireBase

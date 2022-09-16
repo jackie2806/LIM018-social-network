@@ -10,7 +10,7 @@ export const Post = (coment, indentity) => {
   formPizarra.className = 'profilePizarra';
   const divPizarraName = document.createElement('div');
   divPizarraName.className = 'pizarraName';
-  const spamUserPizarra = document.createElement('spam');
+  const spamUserPizarra = document.createElement('span');
   spamUserPizarra.className = 'spamPizarra';
   spamUserPizarra.textContent = user ? user.displayName : 'Nombre del usuario';
   const divPostPizarra = document.createElement('div');
@@ -18,6 +18,9 @@ export const Post = (coment, indentity) => {
   const inputPizarra = document.createElement('input'); // input
   inputPizarra.className = 'postBoard'; // className del input
   inputPizarra.value = coment;
+  inputPizarra.setAttribute('type', 'text');
+  inputPizarra.setAttribute('id', indentity);
+  inputPizarra.setAttribute('readonly', 'readonly');
   const divButtons = document.createElement('div');
   divButtons.className = 'buttons';
   const buttonLike = document.createElement('button');
