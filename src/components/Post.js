@@ -16,9 +16,8 @@ export const Post = (coment, indentity) => {
   const divPostPizarra = document.createElement('div');
   divPostPizarra.className = 'divPostBoard';
   const inputPizarra = document.createElement('input'); // input
-  inputPizarra.className = 'postBoard';
+  inputPizarra.className = 'postBoard'; // className del input
   inputPizarra.value = coment;
-  inputPizarra.setAttribute('data-id', indentity);
   const divButtons = document.createElement('div');
   divButtons.className = 'buttons';
   const buttonLike = document.createElement('button');
@@ -27,13 +26,13 @@ export const Post = (coment, indentity) => {
   const imgPlane = document.createElement('img');
   imgPlane.src = '/img/planeLike.png';
   imgPlane.className = 'imgPlane';
-  const buttonEdit = document.createElement('button');
-  buttonEdit.textContent = 'editar';
+  const buttonEdit = document.createElement('button'); // Botón editar
+  buttonEdit.textContent = 'Editar';
   buttonEdit.setAttribute('data-id', indentity);
-  buttonEdit.className = 'buttonEdit buttonBoard';
-  const buttonDelete = document.createElement('button');
-  buttonDelete.textContent = 'delete'; // llamar Button, caputrar el  id y firebase
-  buttonDelete.className = 'buttonDelete buttonBoard';
+  buttonEdit.className = 'buttonEdit buttonBoard'; // className Button Edit
+  const buttonDelete = document.createElement('button'); // Botón eliminar
+  buttonDelete.textContent = 'Eliminar'; // llamar Button, caputrar el  id y firebase
+  buttonDelete.className = 'buttonDelete buttonBoard'; // className button Delete
   buttonDelete.setAttribute('data-id', indentity);
   formPizarra.appendChild(divPizarraName);
   formPizarra.appendChild(divPostPizarra);

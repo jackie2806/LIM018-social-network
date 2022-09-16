@@ -11,9 +11,9 @@ import {
 } from '../firebase/methods.js';
 import { Post } from './Post.js';
 
-import {
+/* import {
   publicPost,
-} from '../lib/index.js';
+} from '../lib/index.js'; */
 
 //
 export const Home = () => {
@@ -76,7 +76,12 @@ export const Home = () => {
   const divContainerPost = document.createElement('div');
   btnPublic.addEventListener('click', (e) => {
     e.preventDefault();
-    publicPost(inputValue.value, savePost);
+    // publicPost(inputValue.value, savePost);
+    if (inputValue.value !== '') {
+      savePost(inputValue.value);
+    } else {
+      alert('Ingresa un mensaje');
+    }
     document.querySelector('.postHome').value = '';
   });
 
@@ -86,10 +91,10 @@ export const Home = () => {
       divContainerPost.innerHTML = '';
       // console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
-        const postData = doc.data().text;
+        const postData = doc.data();
         const postIdentity = doc.id; // user.uid (para hallar el identificador del usuario)
         // console.log(postIdentity);
-        divContainerPost.appendChild(Post(postData, postIdentity));
+        divContainerPost.appendChild(Post(postData.text, postIdentity));
         divHome.appendChild(divContainerPost);
       });
       // Eliminar datos de Firebase
@@ -104,23 +109,18 @@ export const Home = () => {
       });
       // Editar datos de Firebase
       const btnsEdit = divContainerPost.querySelectorAll('.buttonEdit');
-      const inputBoard = divContainerPost.querySelectorAll('.postBoard');
       btnsEdit.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           e.preventDefault();
+          // console.log(e.target.dataset.id);
+          const btnEdit = divContainerPost.querySelector('.buttonEdit');
+          const inputEdit = divContainerPost.querySelector('.postBoard');
           const doc = await getPost(e.target.dataset.id);
-          const posting = doc.data();
-          console.log('posting', posting);
-          let postId = doc.id;
-          console.log(postId);
-          console.log('Firebase', posting.text);
-          // Aquí el problema
-          inputBoard.value = posting.text;
-          console.log('inputBoard', inputBoard.value);
-          btnsEdit.textContent = 'Actualizar';
-          updatePost(postId, { text: '' });
+          const post = doc.data();// Aquí doc
+          // console.log(doc.data());
+          inputEdit.value = post.text;
+          btnEdit.textContent = 'Actualizar';
         });
-        
     /*     if (inputBoard.value !== '') {
           updatePost(postId, { text:'hola' });
           divContainerPost.querySelector('.buttonEdit').textContent = 'Editar';

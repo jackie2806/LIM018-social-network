@@ -88,7 +88,7 @@ export const getPosts = () => getDocs(collection(dataBase, 'posts'));
 export const onGetPosts = (callback) => onSnapshot(collection(dataBase, 'posts'), callback);
 export const deletePost = (id) => deleteDoc(doc(dataBase, 'posts', id));
 export const getPost = (id) => getDoc(doc(dataBase, 'posts', id));
-export const updatePost = (id, newPost) => updateDoc(doc(dataBase, id), newPost);
+export const updatePost = (id, text) => updateDoc(doc(dataBase, id, 'text'), { text});
 
 export {
   createUserWithEmailAndPassword,

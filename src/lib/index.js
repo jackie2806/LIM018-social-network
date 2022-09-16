@@ -1,12 +1,12 @@
 // aqui exportaras las funciones que necesites
 // Función que crea la publicación en Home
-export const publicPost = (input, savePost) => {
+/* export const publicPost = (input, savePost) => {
   if (input !== '') {
     savePost(input);
   } else {
     alert('Ingresa un mensaje');
   }
-};
+}; */
 
 
 
