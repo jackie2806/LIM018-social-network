@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle, import/no-duplicates
 import { onNavigate } from '../main.js';
+// eslint-disable-next-line import/no-cycle
 import {
   auth,
   signInWithEmailAndPassword,
@@ -7,6 +8,7 @@ import {
   provider,
   GoogleAuthProvider,
   saveUserInLocalStorage,
+// eslint-disable-next-line import/no-unresolved
 } from '../firebase/methods.js';
 
 const loginEmailPassword = async () => {

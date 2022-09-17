@@ -13,7 +13,6 @@ import {
 import {
   getFirestore,
   doc,
-  setDoc,
   addDoc,
   collection,
   getDocs,
@@ -24,6 +23,11 @@ import {
 // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-firestore.js';
 
+// eslint-disable-next-line import/no-cycle
+import { dataRegister } from '../components/Register.js';
+
+// eslint-disable-next-line import/no-cycle
+import { onNavigate } from '../main.js';
 
 export const saveUserInLocalStorage = (user) => localStorage.setItem('currentUser', JSON.stringify(user));
 export const getUserFromLocalStorage = () => JSON.parse(localStorage.getItem('currentUser'));
@@ -35,25 +39,25 @@ export const provider = new GoogleAuthProvider();
 // REGISTER // no pega esto desde git pull
 
 export const registrar = async () => {
-  const data = dataRegister()
+  const data = dataRegister();
 
   try {
-    const dataRegister = await createUserWithEmailAndPassword (auth, data.email, data.password)
+    const dataRegist = await createUserWithEmailAndPassword(auth, data.email, data.password)
 
-    await updateProfile(dataRegister.user, {
+    await updateProfile(dataRegist.user, {
       displayName: data.name,
-    })
-    console.log(dataRegister)
+    });
+    console.log(dataRegist);
 
     alert(`hola ${data.name} ya estás registrado`)
-    onNavigate('/login')
+    onNavigate('/login');
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
-    alert (errorMessage)
-  };
-
-}
+    console.log(errorCode);
+    alert(errorMessage);
+  }
+};
 
 // LOGIN
 export const isLoggedIn = () => {

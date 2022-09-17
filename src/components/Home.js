@@ -6,6 +6,7 @@ import {
   deletePost,
   updatePost,
 
+// eslint-disable-next-line import/no-unresolved
 } from '../firebase/methods.js';
 import { Post } from './Post.js';
 
@@ -122,8 +123,6 @@ export const Home = () => {
         });
       });
     });
-    // Guardar datos en FireBase
   });
-  // Enviar datos a Firebase
   return divHome;
 };
