@@ -2,10 +2,8 @@
 import {
   getUser,
   savePost,
-  getPosts,
   onGetPosts,
   deletePost,
-  getPost,
   updatePost,
 
 } from '../firebase/methods.js';
@@ -111,13 +109,11 @@ export const Home = () => {
       const btnsEdit = divContainerPost.querySelectorAll('.buttonEdit');
 
       btnsEdit.forEach((btn) => {
-        console.log(btn.dataset.id);
         const inputEdit = document.getElementById(`${btn.dataset.id}`);
         btn.addEventListener('click', (e) => {
           e.preventDefault();
           const idPost = e.target.dataset.id;
-          console.log(inputEdit);
-          btn.textContent = 'Actualizar';
+          e.target.textContent = 'Actualizar';
           inputEdit.removeAttribute('readonly');
           if (inputEdit.value !== '') {
             updatePost(idPost, { text: inputEdit.value });

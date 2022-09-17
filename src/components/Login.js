@@ -26,7 +26,6 @@ const loginEmailPassword = async () => {
   }
 };
 
-
 const signInGoogle = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
@@ -41,6 +40,7 @@ const signInGoogle = () => {
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
       // const email = error.customData.email;
       // const credential = GoogleAuthProvider.credentialFromError(error);
     });

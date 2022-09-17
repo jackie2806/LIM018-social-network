@@ -3,6 +3,30 @@
 import { onNavigate } from '../main.js';
 import { registrar } from '../Firebase/methods.js';
 
+function contrasenas() {
+  const inputContrasena = document.getElementById('password').value;
+  const inputConfirmContrasena = document.getElementById('confirmPassword').value;
+  return inputContrasena === inputConfirmContrasena;
+}
+
+function mostrarContrasena(input, ver) {
+  const inputContrasena = input;
+  ver.addEventListener('click', () => {
+    inputContrasena.type = (inputContrasena.type === 'password' ? 'text' : 'password');
+  });
+}
+
+export function dataRegister() {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const name = document.getElementById('name').value;
+  return {
+    email,
+    password,
+    name,
+  };
+}
+
 export const Register = () => {
   const divContainer = document.createElement('div');
   const divRegister = document.createElement('div');
@@ -149,33 +173,8 @@ export const Register = () => {
     if (contrasenas()) {
       registrar();
     } else {
-      alert('las contraseñas no son iguales corrígelas');
+      alert('las contraseñas no son iguales');
     }
   });
   return divContainer;
 };
-
-function contrasenas() {
-  const inputContrasena = document.getElementById('password').value;
-  const inputConfirmContrasena = document.getElementById('confirmPassword').value;
-  return inputContrasena === inputConfirmContrasena;
-}
-
-function mostrarContrasena(input, ver) {
-  ver.addEventListener('click', (evt) => {
-    input.type = (input.type === 'password' ? 'text' : 'password');
-  });
-  console.log(input);
-  console.log(ver);
-}
-
-export function dataRegister() {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const name = document.getElementById('name').value;
-  return {
-    email: email,
-    password: password,
-    name: name,
-  };
-}
