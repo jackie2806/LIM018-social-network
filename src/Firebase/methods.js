@@ -52,9 +52,9 @@ export const registrar = async () => {
     alert(`hola ${data.name} ya estás registrado`)
     onNavigate('/login');
   } catch (error) {
-    const errorCode = error.code;
+    // const errorCode = error.code;
     const errorMessage = error.message;
-    console.log(errorCode);
+    // console.log(errorCode);
     alert(errorMessage);
   }
 };

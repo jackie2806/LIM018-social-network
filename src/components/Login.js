@@ -36,6 +36,7 @@ const signInGoogle = () => {
       console.log('Usuario', credential);
       console.log(result);
       onNavigate('/home');
+      window.location.reload();
       // const token = credential.accessToken;
       // const user = result.user;
     // console.log(user);
