@@ -118,7 +118,6 @@ export const Home = () => {
           inputEdit.removeAttribute('readonly');
           if (inputEdit.value !== '') {
             updatePost(idPost, { text: inputEdit.value });
-            // divContainerPost.querySelector('.buttonEdit').textContent = 'Editar';
           }
         });
       });
