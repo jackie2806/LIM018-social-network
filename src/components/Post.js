@@ -1,5 +1,6 @@
 import {
   getUser,
+// eslint-disable-next-line import/no-unresolved
 } from '../firebase/methods.js';
 
 export const Post = (coment, indentity) => {
