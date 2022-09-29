@@ -1,6 +1,7 @@
 /* eslint-disable import/no-unresolved */
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
+// eslint-disable-next-line import/no-cycle
 import { registrar } from '../Firebase/methods.js';
 
 function contrasenas() {
